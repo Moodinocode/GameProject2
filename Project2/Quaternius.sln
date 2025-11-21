@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "asset-store-tools-editor", "asset-store-tools-editor.csproj", "{82e5c5dd-b37d-e642-0cb9-40112ad3baab}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{864bca8c-35a2-02d7-de84-261e6e84ecf2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82e5c5dd-b37d-e642-0cb9-40112ad3baab}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82e5c5dd-b37d-e642-0cb9-40112ad3baab}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{864bca8c-35a2-02d7-de84-261e6e84ecf2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{864bca8c-35a2-02d7-de84-261e6e84ecf2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
