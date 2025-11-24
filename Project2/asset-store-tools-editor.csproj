@@ -423,31 +423,31 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.YamlDotNet">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
     </Reference>
     <Reference Include="unityplastic">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\unityplastic.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Newtonsoft.Json">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="log4netPlastic">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\log4netPlastic.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.collab-proxy@2.7.1\Lib\Editor\log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.IonicZip">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\Dependencies\DotNetZip\Unity.VisualScripting.IonicZip.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.TextureAssets">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Editor\VisualScripting.Core\EditorAssetResources\Unity.VisualScripting.TextureAssets.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\mscorlib.dll</HintPath>
@@ -825,16 +825,16 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\UnityReferenceAssemblies\unity-4.8-api\Facades\System.Xml.XPath.XDocument.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.TestRunner">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Medieval Village MegaKit[Unity URP]\Project2\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\UnityEngine.TestRunner.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
