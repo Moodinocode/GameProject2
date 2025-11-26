@@ -1,52 +1,140 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameUICanvas : MonoBehaviour
+namespace _Scripts.Managers
 {
-    public static GameUICanvas Instance;
-
-    [Header("Panels")]
-    public GameObject mainMenuPanel;
-    public GameObject gameUIPanel;   
-    public GameObject pausePanel;    
-    public GameObject optionsPanel;
-    public GameObject dialoguePanel;
-    public GameObject creditPanel;
-
-    void Awake()
+    public class CanvasManager : MonoBehaviour
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-
-        mainMenuPanel?.SetActive(false);
-        gameUIPanel?.SetActive(false);
-        pausePanel?.SetActive(false);
-        optionsPanel?.SetActive(false);
-        dialoguePanel?.SetActive(false);
-        creditPanel?.SetActive(false);
+        public static CanvasManager Instance;
         
-        if (scene.buildIndex == 0)
+        private enum UIContext
+        {
+            None,
+            MainMenu,
+            PauseMenu
+        }
+        
+        private UIContext _currentContext = UIContext.None;
+
+        [Header("Panels")]
+        public GameObject mainMenuPanel;
+        public GameObject gameUIPanel;
+        public GameObject pausePanel;
+        public GameObject optionsPanel;
+
+        private bool _isPaused;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+                SceneManager.sceneLoaded += OnSceneLoaded;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        private void Start()
+        {
+            // We are in the main menu scene initially
+            ShowMainMenu();
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (scene.buildIndex == 0) // Main menu scene
+            {
+                ShowMainMenu();
+            }
+            else
+            {
+                ShowGameUI();
+            }
+
+            // Make sure pause panel is hidden when a scene loads
+            if (pausePanel != null)
+                pausePanel.SetActive(false);
+
+            _isPaused = false;
+            Time.timeScale = 1f;
+        }
+
+        public void ShowMainMenu()
         {
             if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
+            if (gameUIPanel != null) gameUIPanel.SetActive(false);
+            if (pausePanel != null) pausePanel.SetActive(false);
         }
-        else
+
+        public void ShowGameUI()
         {
-            if (scene.buildIndex == 1) dialoguePanel.SetActive(true);
-        
+            if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
             if (gameUIPanel != null) gameUIPanel.SetActive(true);
-            //DialoguePanel?.SetActive(false);
         }
+
+        public void TogglePause()
+        {
+            _isPaused = !_isPaused;
+
+            if (pausePanel != null)
+                pausePanel.SetActive(_isPaused);
+
+            Time.timeScale = _isPaused ? 0f : 1f;
+        }
+        public void OnPlayButton()
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        
+        public void OnResumeButton()
+        {
+            if (_isPaused)
+            {
+                TogglePause();
+            }
+        }
+        
+        public void OnMainMenuButton()
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(0); 
+        }
+        
+        public void OpenOptions()
+        {
+            // Detect where we came from
+            if (mainMenuPanel.activeSelf)
+                _currentContext = UIContext.MainMenu;
+            else if (pausePanel.activeSelf)
+                _currentContext = UIContext.PauseMenu;
+
+            // Hide all
+            mainMenuPanel.SetActive(false);
+            pausePanel.SetActive(false);
+            gameUIPanel.SetActive(false);
+
+            optionsPanel.SetActive(true);
+        }
+
+        public void CloseOptions()
+        {
+            optionsPanel.SetActive(false);
+
+            switch (_currentContext)
+            {
+                case UIContext.MainMenu:
+                    mainMenuPanel.SetActive(true);
+                    break;
+
+                case UIContext.PauseMenu:
+                    pausePanel.SetActive(true);
+                    break;
+            }
+        }
+
     }
 }
