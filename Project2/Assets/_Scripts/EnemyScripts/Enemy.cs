@@ -7,6 +7,7 @@ namespace _Scripts.EnemyScripts
     {
         [SerializeField] private int HP = 100;
         private Animator animator;
+        public bool isDead = false;
     
         private NavMeshAgent navAgent;
     
@@ -24,6 +25,7 @@ namespace _Scripts.EnemyScripts
 
             if (HP <= 0)
             {
+                isDead = true;
                 int radnomValue = Random.Range(0, 2);// 0 or 1
                 if (radnomValue == 0)
                 {
