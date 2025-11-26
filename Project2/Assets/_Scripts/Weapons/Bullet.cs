@@ -8,9 +8,8 @@ namespace _Scripts.Weapons
     {
         [SerializeField] float timeToDestory = 2f;
         float _timer;
-
-        int _damage;
-        public void SetDamage(int dmg) => _damage = dmg;
+        [SerializeField]int _damage;
+        //public void SetDamage(int dmg) => _damage = dmg;
 
         void Update()
         {
