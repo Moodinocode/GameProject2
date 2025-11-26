@@ -1,18 +1,36 @@
-using System;
 using UnityEngine;
 
 namespace _Scripts.ChestScripts
 {
     public class KeyScript : MonoBehaviour
     {
-        public bool hasKey;
+        private bool _canPickUp;
+        private bool _hasKey;
 
-        void OnTriggerEnter(Collider other)
+        private GameObject _keyObject;
+
+        private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Key"))
+            if (!other.CompareTag("Key")) return;
+
+            _canPickUp = true;
+            _keyObject = other.gameObject;
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (!other.CompareTag("Key")) return;
+
+            _canPickUp = false;
+            _keyObject = null;
+        }
+
+        private void Update()
+        {
+            if (_canPickUp && Input.GetKeyDown(KeyCode.E))
             {
-                hasKey = true;
-                Destroy(other);
+                _hasKey = true;
+                Destroy(_keyObject);
             }
         }
     }

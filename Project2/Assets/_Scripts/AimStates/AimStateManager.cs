@@ -60,7 +60,6 @@ namespace _Scripts.AimStates
             
             Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
             Ray ray = Camera.main.ScreenPointToRay(screenCenter); //check null because the warning is annoying
-            
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask)) aimPosition.position = Vector3.Lerp(aimPosition.position, hit.point, Time.deltaTime * aimSmoothSpeed);
             
             virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(virtualCamera.m_Lens.FieldOfView, currentFov, Time.deltaTime * fovSmoothSpeed);
@@ -81,8 +80,7 @@ namespace _Scripts.AimStates
         void MoveCamera()
         {
             if (Input.GetKeyDown(KeyCode.LeftAlt)) _xFollowPosition = -_xFollowPosition;
-            if (_movement.CurrentState == _movement.Crouch) _yFollowPosition = crouchCamHeight;
-            else _yFollowPosition = _oldYFollowPosition;
+            _yFollowPosition = _movement.CurrentState == _movement.Crouch ? crouchCamHeight : _oldYFollowPosition;
             
             Vector3 newFollowPosition = new Vector3(_xFollowPosition, _yFollowPosition, cameraFollowPosition.localPosition.z);
             cameraFollowPosition.localPosition = Vector3.Lerp(cameraFollowPosition.localPosition, newFollowPosition, Time.deltaTime * shoulderSwapSpeed);
