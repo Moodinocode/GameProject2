@@ -69,6 +69,7 @@
     <Compile Include="Assets\_Scripts\AimStates\AimStateManager.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimBaseState.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponAmmo.cs" />
+    <Compile Include="Assets\_Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ClickToMove.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\Zombie.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\_Scripts\Weapons\WeaponManager.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ActionStateManager.cs" />
     <Compile Include="Assets\_Scripts\ChestScripts\KeyScript.cs" />
+    <Compile Include="Assets\_Scripts\Managers\SaveLoadManager.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ReloadState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieIdleState.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\MovementBaseState.cs" />
