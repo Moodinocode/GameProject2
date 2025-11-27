@@ -15,7 +15,6 @@ namespace _Scripts.PlayerActions
             action.lHandIK.weight = Mathf.Lerp(action.lHandIK.weight,1,Time.deltaTime*10);
             if (Input.GetKeyDown(KeyCode.R) && CanReload(action))
             {
-                Debug.Log("reloading");
                 action.SwitchState(action.Reload);
             }
         }

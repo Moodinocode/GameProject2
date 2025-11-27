@@ -5,7 +5,7 @@ namespace _Scripts.Managers
 {
     public class CanvasManager : MonoBehaviour
     {
-        public static CanvasManager Instance;
+        private static CanvasManager _instance;
         
         private enum UIContext
         {
@@ -26,9 +26,9 @@ namespace _Scripts.Managers
 
         private void Awake()
         {
-            if (Instance == null)
+            if (_instance == null)
             {
-                Instance = this;
+                _instance = this;
                 DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneLoaded;
             }
@@ -63,6 +63,15 @@ namespace _Scripts.Managers
             Time.timeScale = 1f;
         }
 
+        void Update()
+        {
+            if (SceneManager.GetActiveScene().buildIndex != 0)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                    TogglePause();
+            }
+        }
+
         public void ShowMainMenu()
         {
             if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
@@ -80,14 +89,14 @@ namespace _Scripts.Managers
         {
             _isPaused = !_isPaused;
 
-            if (pausePanel != null)
+            if (pausePanel)
                 pausePanel.SetActive(_isPaused);
 
             Time.timeScale = _isPaused ? 0f : 1f;
         }
         public void OnPlayButton()
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene(1);
         }
         
         public void OnResumeButton()

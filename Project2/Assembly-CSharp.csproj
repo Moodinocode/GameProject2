@@ -68,8 +68,8 @@
     <Compile Include="Assets\_Scripts\MovementStates\States\WalkState.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimStateManager.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimBaseState.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\WeaponAmmo.cs" />
     <Compile Include="Assets\_Scripts\Managers\AudioManager.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\WeaponAmmo.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ClickToMove.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\Zombie.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />
