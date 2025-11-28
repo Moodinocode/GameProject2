@@ -1,10 +1,12 @@
 using UnityEngine;
 
-using _Scripts.EnemyScripts; 
+using _Scripts.EnemyScripts;
+using _Scripts.ObjectPooling;
+using UnityEngine.Pool;
 
 namespace _Scripts.Weapons
 {
-    public class Bullet : MonoBehaviour
+    public class Bullet : MonoBehaviour, IPooledObject
     {
         [SerializeField] float timeToDestory = 2f;
         float _timer;
@@ -15,7 +17,8 @@ namespace _Scripts.Weapons
         {
             _timer += Time.deltaTime;
             if (_timer > timeToDestory)
-                Destroy(gameObject);
+                gameObject.SetActive(false);    
+            //Destroy(gameObject);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -29,7 +32,13 @@ namespace _Scripts.Weapons
                 }
             }
 
-            Destroy(gameObject);
+            //Destroy(gameObject); set as inactive instead of destroying for object pooling
+            gameObject.SetActive(false);
+        }
+
+        public void OnObjectSpawn()
+        {
+            _timer = 0f;
         }
     }
 }

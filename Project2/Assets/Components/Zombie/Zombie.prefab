@@ -1958,7 +1958,6 @@ GameObject:
   - component: {fileID: 7668927556577047187}
   - component: {fileID: 2190249230452579059}
   - component: {fileID: 1179638015354780724}
-  - component: {fileID: 5779720837847358669}
   m_Layer: 0
   m_Name: ZombieHand
   m_TagString: ZombieHand
@@ -2052,19 +2051,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5779720837847358669
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7524918444987695958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edb09342f24c02a409ab417478f900f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 0
 --- !u!1 &7680316283734787345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,10 +2348,10 @@ GameObject:
   - component: {fileID: 1257793285397718954}
   - component: {fileID: 514048597113236108}
   - component: {fileID: 710195913713959949}
+  - component: {fileID: 2240723769595473489}
   - component: {fileID: 2327902800297180492}
   - component: {fileID: 732064786395793135}
   - component: {fileID: 4276019264704614694}
-  - component: {fileID: 7034109189055924520}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Zombie
@@ -2423,7 +2409,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45f2f22ba957334cbfa065ef4ed83a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
+  stats: {fileID: 11400000, guid: 175dd3c59d5839045b22c785f88ad662, type: 2}
+  isDead: 0
+--- !u!114 &2240723769595473489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9194134424212336526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3dd3712d8bcb0438f4ba0f049ce7d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2327902800297180492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2481,17 +2480,3 @@ CapsuleCollider:
   m_Height: 1.9
   m_Direction: 1
   m_Center: {x: 0, y: 0.86, z: 0}
---- !u!114 &7034109189055924520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9194134424212336526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d00d476f84921246a40a8b7af592608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zombieHand: {fileID: 5779720837847358669}
-  zombieDamage: 25

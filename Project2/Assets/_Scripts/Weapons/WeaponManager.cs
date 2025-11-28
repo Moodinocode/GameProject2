@@ -1,4 +1,5 @@
 using _Scripts.AimStates;
+using _Scripts.ObjectPooling;
 using _Scripts.PlayerActions;
 using UnityEngine;
 
@@ -69,9 +70,15 @@ namespace _Scripts.Weapons
             }
             for (int i = 0; i < bulletPerShot; i++)
             {
-               GameObject currentBullet = Instantiate(bullet, barrelPosition.position, barrelPosition.rotation);
-               Rigidbody currentBulletRigidbody = currentBullet.GetComponent<Rigidbody>();
-               currentBulletRigidbody.AddForce(barrelPosition.forward * bulletVelocity,ForceMode.Impulse);
+               //GameObject currentBullet = Instantiate(bullet, barrelPosition.position, barrelPosition.rotation);
+               GameObject currentBullet = ObjectPooler.Instance.GetFromPool(
+                   "Bullet",
+                   barrelPosition.position,
+                   barrelPosition.rotation
+               );
+
+               //Rigidbody currentBulletRigidbody = currentBullet.GetComponent<Rigidbody>();
+               //currentBulletRigidbody.AddForce(barrelPosition.forward * bulletVelocity,ForceMode.Impulse);
             }
         }
     }

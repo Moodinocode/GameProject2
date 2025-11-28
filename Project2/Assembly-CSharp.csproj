@@ -45,7 +45,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Scripts\EnemyScripts\ZombieHand.cs" />
+    <Compile Include="Assets\_Scripts\EnemyScripts\EnemyAttack.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimState.cs" />
     <Compile Include="Assets\_Scripts\ChestScripts\ChestOpening.cs" />
     <Compile Include="Assets\_Scripts\Managers\MainMenuManager.cs" />
@@ -59,9 +59,11 @@
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieChaseState.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ZombieSpawnController.cs" />
+    <Compile Include="Assets\_Scripts\ObjectPooling\ObjectPooler.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponBloom.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Bullet.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\IdleState.cs" />
+    <Compile Include="Assets\_Scripts\ObjectPooling\IPooledObject.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\CrouchState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieAttackState.cs" />
     <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
@@ -71,7 +73,6 @@
     <Compile Include="Assets\_Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponAmmo.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ClickToMove.cs" />
-    <Compile Include="Assets\_Scripts\EnemyScripts\Zombie.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />
     <Compile Include="Assets\_Scripts\Managers\EventSystemManager.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ActionBaseState.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\_Scripts\ChestScripts\KeyScript.cs" />
     <Compile Include="Assets\_Scripts\Managers\SaveLoadManager.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ReloadState.cs" />
+    <Compile Include="Assets\_Scripts\EnemyScripts\EnemyStats.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieIdleState.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\MovementBaseState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\Enemy.cs" />

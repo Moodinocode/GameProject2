@@ -1,43 +1,47 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieIdleState : StateMachineBehaviour
+namespace _Scripts.EnemyScripts.States
 {
-    float timer;
-    public float idleTime = 0f;
+    public class ZombieIdleState : StateMachineBehaviour
+    {
+        float timer;
+        // public float idleTime = 0f;
 
-    private Transform player;
-
-    public float detectionAreaRadius = 18f;
+        private Transform player;
+        Enemy enemy;
+        EnemyStats stats;
+        //public float detectionAreaRadius = 18f;
     
 
-    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        timer = 0;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            enemy = animator.GetComponent<Enemy>();
+            stats = enemy.stats;
+            timer = 0;
+            player = GameObject.FindGameObjectWithTag("Player").transform;
         
 
-    }
-
-
-    override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        timer += Time.deltaTime;
-        if (timer > idleTime)
-        {
-            animator.SetBool("isPatroling" , true);
         }
+
+
+        override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+        {
+            timer += Time.deltaTime;
+            if (timer > stats.idleDuration)
+            {
+                animator.SetBool("isPatroling" , true);
+            }
         
-        float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
+            float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
 
-        if (distanceFromPlayer < detectionAreaRadius)
-        {
-            animator.SetBool("isChasing" , true);
+            if (distanceFromPlayer < stats.detectionRadius)
+            {
+                animator.SetBool("isChasing" , true);
+            }
+
         }
-
-    }
     
+    }
 }
 
     
