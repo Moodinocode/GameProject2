@@ -1,73 +1,81 @@
 using System.Collections;
-using System.Collections.Generic;
-using _Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-
-public class Player : MonoBehaviour
+namespace _Scripts
 {
-   public int HP = 100;
-   public GameObject bloodyScreen;
-   public Image fadeImage;
+    public class Player : MonoBehaviour
+    {
+        private static readonly int Death = Animator.StringToHash("Death");
+        public int hp = 100;
+        public GameObject bloodyScreen;
+        public Image fadeImage;
+        
+        [HideInInspector] public Animator anim;
    
-   
-   public void TakeDamage(int damageAmount)
-   {
-       HP -= damageAmount;
+        void Start()
+        {
+            anim = GetComponent<Animator>();
+        }
+        public void TakeDamage(int damageAmount)
+        {
+            hp -= damageAmount;
 
-       if (HP <= 0)
-       {
-           print("Player Dead");
-       }
-       else
-       {
-           print("Player hit");
-           StartCoroutine(BloodyScreenEffect());
-       }
-   }
+            if (hp <= 0)
+            {
+                hp = 0;
+                PlayerDead();
+                return;
+            }
+            
+            StartCoroutine(BloodyScreenEffect());
+            
+        }
 
-   private IEnumerator BloodyScreenEffect()
-   {
-       if (bloodyScreen.activeInHierarchy == false)
-       {
-           bloodyScreen.SetActive(true);
-       }
+        private void PlayerDead()
+        {
+            /*GetComponent<MouseMovement>().enabled = false;
+       GetComponent<PlayerMovement>().enabled = false;*/
        
-       var image = bloodyScreen.GetComponentInChildren<Image>();
+            // dying animation
+            anim.SetTrigger(Death);
+        }
 
-       Color startColor = image.color;
-       startColor.a = 1f;
-       image.color = startColor;
+        private IEnumerator BloodyScreenEffect()
+        {
+            if (bloodyScreen.activeInHierarchy == false)
+            {
+                bloodyScreen.SetActive(true);
+            }
+       
+            var image = bloodyScreen.GetComponentInChildren<Image>();
 
-       float duration = 3f;
-       float elapsedTime = 0f;
+            Color startColor = image.color;
+            startColor.a = 1f;
+            image.color = startColor;
 
-       while (elapsedTime < duration)
-       {
-           float alpha = Mathf.Lerp(1f, 0f, elapsedTime / duration);
+            float duration = 3f;
+            float elapsedTime = 0f;
 
-           Color newColor = image.color;
-           newColor.a = alpha;
-           image.color = newColor;
-           elapsedTime += Time.deltaTime;
+            while (elapsedTime < duration)
+            {
+                float alpha = Mathf.Lerp(1f, 0f, elapsedTime / duration);
+
+                Color newColor = image.color;
+                newColor.a = alpha;
+                image.color = newColor;
+                elapsedTime += Time.deltaTime;
            
-           yield return null;
-       }
+                yield return null;
+            }
        
        
-       if (bloodyScreen.activeInHierarchy)
-       {
-           bloodyScreen.SetActive(false);
-       }
-   }
+            if (bloodyScreen.activeInHierarchy)
+            {
+                bloodyScreen.SetActive(false);
+            }
+        }
    
-   private void OnTriggerEnter(Collider other)
-   {
-       if (other.CompareTag("ZombieHand"))
-       {
-           TakeDamage(other.gameObject.GetComponent<ZombieHand>().damage);
-       }
-   }
-   
+    }
 }

@@ -9,6 +9,7 @@ TagManager:
   - Zombie
   - Waypoints
   - ZombieHand
+  - Bullet
   layers:
   - Default
   - TransparentFX

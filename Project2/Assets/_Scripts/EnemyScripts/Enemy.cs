@@ -5,7 +5,8 @@ namespace _Scripts.EnemyScripts
 {
     public class Enemy : MonoBehaviour
     {
-        [SerializeField] private int HP = 100;
+        public EnemyStats stats;
+        private int HP;
         private Animator animator;
         public bool isDead = false;
     
@@ -17,6 +18,7 @@ namespace _Scripts.EnemyScripts
         {
             animator = GetComponent<Animator>();
             navAgent = GetComponent<NavMeshAgent>();
+            HP = stats.maxHP;
         }
 
         public void TakeDamage(int damageAmount)
@@ -26,7 +28,7 @@ namespace _Scripts.EnemyScripts
             if (HP <= 0)
             {
                 isDead = true;
-                int radnomValue = Random.Range(0, 2);// 0 or 1
+                int radnomValue = Random.Range(0, 2);
                 if (radnomValue == 0)
                 {
                     animator.SetTrigger("DIE1");
