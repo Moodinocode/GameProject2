@@ -9,7 +9,7 @@ namespace _Scripts.Managers
         public static PlayerUIManager Instance;
 
         [Header("Health")]
-        public Image healthBarFill;   // Only the fill image
+        public Image healthBarFill;   
         public float healthLerpSpeed = 5f;
         private float _targetHealthFill = 1f;
 
@@ -21,7 +21,7 @@ namespace _Scripts.Managers
         public Image keyIcon;
 
         [Header("Portal Message")]
-        public GameObject portalMessage;   // The whole panel (BG + text)
+        public GameObject portalMessage;   
 
         private void Awake()
         {
@@ -37,7 +37,7 @@ namespace _Scripts.Managers
             portalMessage.SetActive(false);
         }
 
-        // ---------------- UI UPDATE METHODS ----------------
+   
 
         public void UpdateHealth(float current, float max)
         {

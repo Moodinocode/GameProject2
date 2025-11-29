@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 namespace _Scripts.Managers
@@ -22,6 +23,19 @@ namespace _Scripts.Managers
         public void SaveGame()
         {
          PlayerPrefs.Save();   
+        }
+        
+        public void QuitGame()
+        {
+            Debug.Log("Quit Game button pressed.");
+    
+            
+            #if UNITY_EDITOR
+                    EditorApplication.isPlaying = false;
+            #else
+                    // If running in a build, close the application
+                    Application.Quit();
+            #endif
         }
         
     }
