@@ -1,4 +1,5 @@
 using System.Collections;
+using _Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -20,12 +21,13 @@ namespace _Scripts
         }
         public void TakeDamage(int damageAmount)
         {
+            
             hp -= damageAmount;
-            Debug.Log(damageAmount);
+            hp = Mathf.Clamp(hp, 0, 100);
+            PlayerUIManager.Instance.UpdateHealth(hp, 100);
 
-            if (hp <= 0)
+            if (hp == 0)
             {
-                hp = 0;
                 PlayerDead();
                 return;
             }

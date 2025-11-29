@@ -47,16 +47,16 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\EnemyScripts\EnemyAttack.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimState.cs" />
+    <Compile Include="Assets\_Scripts\Managers\PlayerUiManager.cs" />
     <Compile Include="Assets\_Scripts\ChestScripts\ChestOpening.cs" />
-    <Compile Include="Assets\_Scripts\Managers\MainMenuManager.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\DefaultState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombiePatrolingState.cs" />
     <Compile Include="Assets\_Scripts\Managers\CanvasManager.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\RunState.cs" />
     <Compile Include="Assets\_Scripts\AimStates\HipFireState.cs" />
-    <Compile Include="Assets\_Scripts\Managers\BackgroundMusicManager.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\MovementStateManager.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieChaseState.cs" />
+    <Compile Include="Assets\_Scripts\Portal.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ZombieSpawnController.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\ObjectPooler.cs" />
@@ -66,7 +66,6 @@
     <Compile Include="Assets\_Scripts\ObjectPooling\IPooledObject.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\CrouchState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieAttackState.cs" />
-    <Compile Include="Assets\_Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\WalkState.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimStateManager.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimBaseState.cs" />
