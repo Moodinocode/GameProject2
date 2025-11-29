@@ -1,3 +1,4 @@
+using _Scripts.Managers;
 using UnityEngine;
 
 namespace _Scripts.Weapons
@@ -39,6 +40,7 @@ namespace _Scripts.Weapons
                     extraAmmo = 0;
                 }
             } 
+            PlayerUIManager.Instance.UpdateAmmo(currentAmmo, extraAmmo);
         }
     }
 }

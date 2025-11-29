@@ -1,4 +1,5 @@
 using _Scripts.AimStates;
+using _Scripts.Managers;
 using _Scripts.ObjectPooling;
 using _Scripts.PlayerActions;
 using UnityEngine;
@@ -63,6 +64,7 @@ namespace _Scripts.Weapons
             _audioSource.PlayOneShot(gunShot);
             _ammo.currentAmmo--;
             _recoil.TriggerRecoil();
+            PlayerUIManager.Instance.UpdateAmmo(_ammo.currentAmmo, _ammo.extraAmmo);
             
             if (_ammo.currentAmmo == 5)
             {

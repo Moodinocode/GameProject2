@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.EnemyScripts
 {
@@ -8,6 +9,8 @@ namespace _Scripts.EnemyScripts
     {
         public int initialZombiesPerWave = 2;
         public int currentZombiesPerWave;
+        public int maxWaves = 5;
+        public bool wavesFinished = false;
 
         public float spawnDelay = 0.5f;
     
@@ -20,6 +23,8 @@ namespace _Scripts.EnemyScripts
         public List<Enemy> currentZombiesAlive;
     
         public GameObject zombiePrefab;
+        
+        public GameObject portal;
     
     
    
@@ -33,6 +38,12 @@ namespace _Scripts.EnemyScripts
 
         private void StartNextWave()
         {
+            if (currentWave >= maxWaves)
+            {
+                wavesFinished = true;
+                portal.SetActive(true);   // Unlock the portal
+                return;
+            }
             currentZombiesAlive.Clear();
             currentWave++;
 
@@ -71,7 +82,7 @@ namespace _Scripts.EnemyScripts
         
             zombiesToRemove.Clear();
 
-            if (currentZombiesAlive.Count == 0 && inCooldown == false)
+            if (!wavesFinished && currentZombiesAlive.Count == 0 && inCooldown == false)
             {
                 StartCoroutine(WaveCooldown());
             }
@@ -92,6 +103,8 @@ namespace _Scripts.EnemyScripts
             yield return new WaitForSeconds(waveCooldown);
             inCooldown = false;
 
+            if (wavesFinished) yield break; 
+            
             currentZombiesPerWave *= 2;
             StartNextWave();
         

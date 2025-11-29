@@ -1,11 +1,12 @@
+using _Scripts.Managers;
 using UnityEngine;
 
 namespace _Scripts.ChestScripts
 {
     public class KeyScript : MonoBehaviour
     {
-        private bool _canPickUp;
-        private bool _hasKey;
+        private bool _canPickUp; 
+        public bool hasKey;
 
         private GameObject _keyObject;
 
@@ -29,7 +30,8 @@ namespace _Scripts.ChestScripts
         {
             if (_canPickUp && Input.GetKeyDown(KeyCode.E))
             {
-                _hasKey = true;
+                hasKey = true;
+                PlayerUIManager.Instance.ShowKeyIcon();
                 Destroy(_keyObject);
             }
         }
