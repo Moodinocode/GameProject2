@@ -11,28 +11,29 @@ namespace _Scripts.Weapons
         [SerializeField] float timeToDestory = 2f;
         float _timer;
         [SerializeField]int _damage;
-        //public void SetDamage(int dmg) => _damage = dmg;
 
         void Update()
         {
             _timer += Time.deltaTime;
             if (_timer > timeToDestory)
                 gameObject.SetActive(false);    
-            //Destroy(gameObject);
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.CompareTag("Zombie"))
+            Debug.Log("Collision");
+            Debug.Log("Bullet collided with: " + collision.gameObject.name);
+            if (collision.gameObject.CompareTag("Zombie")||
+                collision.collider.transform.root.CompareTag("Zombie"))
             {
+                Debug.Log("Hit");
                 Enemy zombie = collision.gameObject.GetComponent<Enemy>();
                 if (zombie != null)
                 {
                     zombie.TakeDamage(_damage);
                 }
             }
-
-            //Destroy(gameObject); set as inactive instead of destroying for object pooling
+            
             gameObject.SetActive(false);
         }
 

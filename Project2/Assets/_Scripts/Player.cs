@@ -21,6 +21,7 @@ namespace _Scripts
         public void TakeDamage(int damageAmount)
         {
             hp -= damageAmount;
+            Debug.Log(damageAmount);
 
             if (hp <= 0)
             {

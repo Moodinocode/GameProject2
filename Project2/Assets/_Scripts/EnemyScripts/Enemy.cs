@@ -24,6 +24,7 @@ namespace _Scripts.EnemyScripts
         public void TakeDamage(int damageAmount)
         {
             HP -= damageAmount;
+            Debug.Log(damageAmount);
 
             if (HP <= 0)
             {
