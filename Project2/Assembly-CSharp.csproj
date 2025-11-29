@@ -45,45 +45,45 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\_Scripts\EnemyScripts\EnemyAttack.cs" />
-    <Compile Include="Assets\_Scripts\AimStates\AimState.cs" />
-    <Compile Include="Assets\_Scripts\Managers\PlayerUiManager.cs" />
     <Compile Include="Assets\_Scripts\ChestScripts\ChestOpening.cs" />
-    <Compile Include="Assets\_Scripts\PlayerActions\DefaultState.cs" />
-    <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombiePatrolingState.cs" />
     <Compile Include="Assets\_Scripts\Managers\CanvasManager.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\RunState.cs" />
-    <Compile Include="Assets\_Scripts\AimStates\HipFireState.cs" />
-    <Compile Include="Assets\_Scripts\MovementStates\MovementStateManager.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieChaseState.cs" />
     <Compile Include="Assets\_Scripts\Portal.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ZombieSpawnController.cs" />
-    <Compile Include="Assets\_Scripts\ObjectPooling\ObjectPooler.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponBloom.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Bullet.cs" />
-    <Compile Include="Assets\_Scripts\MovementStates\States\IdleState.cs" />
     <Compile Include="Assets\_Scripts\ObjectPooling\IPooledObject.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\CrouchState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieAttackState.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\States\WalkState.cs" />
-    <Compile Include="Assets\_Scripts\AimStates\AimStateManager.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimBaseState.cs" />
+    <Compile Include="Assets\_Scripts\AimStates\AimStateManager.cs" />
+    <Compile Include="Assets\_Scripts\EnemyScripts\ClickToMove.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\WeaponManager.cs" />
+    <Compile Include="Assets\_Scripts\PlayerActions\ActionStateManager.cs" />
+    <Compile Include="Assets\_Scripts\Managers\SaveLoadManager.cs" />
+    <Compile Include="Assets\_Scripts\MovementStates\MovementBaseState.cs" />
+    <Compile Include="Assets\_Scripts\EnemyScripts\Enemy.cs" />
+    <Compile Include="Assets\_Scripts\EnemyScripts\EnemyAttack.cs" />
+    <Compile Include="Assets\_Scripts\AimStates\AimState.cs" />
+    <Compile Include="Assets\_Scripts\Managers\PlayerUiManager.cs" />
+    <Compile Include="Assets\_Scripts\PlayerActions\DefaultState.cs" />
+    <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombiePatrolingState.cs" />
+    <Compile Include="Assets\_Scripts\AimStates\HipFireState.cs" />
+    <Compile Include="Assets\_Scripts\MovementStates\MovementStateManager.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />
+    <Compile Include="Assets\_Scripts\ObjectPooling\ObjectPooler.cs" />
+    <Compile Include="Assets\_Scripts\MovementStates\States\IdleState.cs" />
     <Compile Include="Assets\_Scripts\Managers\AudioManager.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponAmmo.cs" />
-    <Compile Include="Assets\_Scripts\EnemyScripts\ClickToMove.cs" />
     <Compile Include="Assets\_Scripts\Player.cs" />
     <Compile Include="Assets\_Scripts\Managers\EventSystemManager.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ActionBaseState.cs" />
-    <Compile Include="Assets\_Scripts\Weapons\WeaponManager.cs" />
-    <Compile Include="Assets\_Scripts\PlayerActions\ActionStateManager.cs" />
     <Compile Include="Assets\_Scripts\ChestScripts\KeyScript.cs" />
-    <Compile Include="Assets\_Scripts\Managers\SaveLoadManager.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ReloadState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\EnemyStats.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieIdleState.cs" />
-    <Compile Include="Assets\_Scripts\MovementStates\MovementBaseState.cs" />
-    <Compile Include="Assets\_Scripts\EnemyScripts\Enemy.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -360,6 +360,9 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Flow\Dependencies\NCalc\Unity.VisualScripting.Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\PackageCache\com.unity.collections@1.2.4\Unity.Collections.LowLevel.ILSupport\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
@@ -727,8 +730,8 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.62f3\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    <Reference Include="Unity.2D.IK.Runtime">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
@@ -736,20 +739,92 @@
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AI.Navigation">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Burst">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Animation.Rigging.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Animation.Rigging.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Path.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.PixelPerfect.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rider.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Aseprite.Common">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Aseprite.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualScripting.Flow">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Extras.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.PlasticSCM.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.SpriteShape.Runtime">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.PixelPerfect">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.PixelPerfect.dll</HintPath>
+    </Reference>
+    <Reference Include="PPv2URPConverters">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Aseprite.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Aseprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Animation.Rigging.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="PsdPlugin">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\PsdPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Timeline.Editor.dll</HintPath>
@@ -769,35 +844,32 @@
     <Reference Include="Unity.VisualScripting.Core">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Tilemap.Extras">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Tilemap.Extras.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.2D.Internal">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.2D.Internal.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.Editor">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.VisualScripting.Flow">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.Flow.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Timeline.dll</HintPath>
@@ -805,26 +877,26 @@
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.SettingsProvider.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.AI.Navigation.Updater">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.PlasticSCM.Editor">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="PPv2URPConverters">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
@@ -832,29 +904,26 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.AI.Navigation.Editor.ConversionSystem">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.ConversionSystem.dll</HintPath>
-    </Reference>
     <Reference Include="Cinemachine">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Cinemachine.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.SpriteShape.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Animation.Rigging">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Animation.Rigging.dll</HintPath>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.RenderPipelines.Universal.Editor">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.Animation.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

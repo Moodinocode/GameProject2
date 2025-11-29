@@ -40,13 +40,12 @@ namespace _Scripts.Managers
 
         private void Start()
         {
-            // We are in the main menu scene initially
             ShowMainMenu();
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (scene.buildIndex == 0) // Main menu scene
+            if (scene.buildIndex == 0) 
             {
                 ShowMainMenu();
             }
@@ -54,8 +53,7 @@ namespace _Scripts.Managers
             {
                 ShowGameUI();
             }
-
-            // Make sure pause panel is hidden when a scene loads
+            
             if (pausePanel != null)
                 pausePanel.SetActive(false);
 
@@ -115,13 +113,11 @@ namespace _Scripts.Managers
         
         public void OpenOptions()
         {
-            // Detect where we came from
             if (mainMenuPanel.activeSelf)
                 _currentContext = UIContext.MainMenu;
             else if (pausePanel.activeSelf)
                 _currentContext = UIContext.PauseMenu;
-
-            // Hide all
+            
             mainMenuPanel.SetActive(false);
             pausePanel.SetActive(false);
             gameUIPanel.SetActive(false);
