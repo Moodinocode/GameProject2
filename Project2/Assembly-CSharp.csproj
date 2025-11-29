@@ -84,6 +84,7 @@
     <Compile Include="Assets\_Scripts\PlayerActions\ReloadState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\EnemyStats.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieIdleState.cs" />
+    <Compile Include="Assets\_Scripts\Weapons\CrosshairUi.cs" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

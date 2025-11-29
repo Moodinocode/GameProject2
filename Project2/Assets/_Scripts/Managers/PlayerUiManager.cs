@@ -51,15 +51,18 @@ namespace _Scripts.Managers
     
         private void Update()
         {
-            if (!healthBarFill)
-            {
-                healthBarFill.fillAmount = Mathf.Lerp(
-                    healthBarFill.fillAmount,
-                    _targetHealthFill,
-                    Time.deltaTime * healthLerpSpeed
-                );
-            }
+            if (!healthBarFill) return;
+
+            healthBarFill.fillAmount = Mathf.Lerp(
+                healthBarFill.fillAmount,
+                _targetHealthFill,
+                Time.deltaTime * healthLerpSpeed
+            );
+            //Debug.Log("Current Fill: " + healthBarFill.fillAmount + " Target: " + _targetHealthFill);
         }
+        
+
+
 
         public void ShowKeyIcon()
         {

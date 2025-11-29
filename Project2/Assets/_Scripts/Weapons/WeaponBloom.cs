@@ -12,10 +12,16 @@ namespace _Scripts.Weapons
         [SerializeField] private float sprintBloomMultiplier = 2f;
         [SerializeField] private float adsBloomMultiplier = 0.5f;
         
+        [SerializeField] private float bloomIncreasePerShot = 1.4f;
+        [SerializeField] private float bloomRecoverySpeed = 5f;  // how fast bloom goes down
+
         MovementStateManager _movement;
         AimStateManager _aim;
         
         float _currentBloom;
+        
+        public float CurrentBloom => _currentBloom;
+
 
         void Start()
         {
@@ -23,25 +29,44 @@ namespace _Scripts.Weapons
             _aim = GetComponentInParent<AimStateManager>();
         
         }
+        void Update()
+        {
+            float targetBloom = defaultBloomAngle;
+
+            if (_movement.CurrentState == _movement.Walk)
+                targetBloom = defaultBloomAngle * walkBloomMultiplier;
+
+            else if (_movement.CurrentState == _movement.Run)
+                targetBloom = defaultBloomAngle * sprintBloomMultiplier;
+
+            else if (_movement.CurrentState == _movement.Crouch)
+            {
+                if (_movement.movementDirection.magnitude < 0.1f)
+                    targetBloom = defaultBloomAngle * crouchBloomMultiplier;
+                else
+                    targetBloom = defaultBloomAngle * crouchBloomMultiplier * walkBloomMultiplier;
+            }
+
+            if (_aim.CurrentState == _aim.Aim)
+                targetBloom *= adsBloomMultiplier;
+
+            // Smooth recovery towards target bloom
+            _currentBloom = Mathf.Lerp(_currentBloom, targetBloom, Time.deltaTime * bloomRecoverySpeed);
+        }
+
 
         public Vector3 BloomAngle(Transform barrelPosition)
         {
-            if (_movement.CurrentState == _movement.Idle) _currentBloom = defaultBloomAngle;
-            else if (_movement.CurrentState == _movement.Walk) _currentBloom = defaultBloomAngle * walkBloomMultiplier;
-            else if (_movement.CurrentState == _movement.Run) _currentBloom = defaultBloomAngle * sprintBloomMultiplier;
-            else if (_movement.CurrentState == _movement.Crouch)
-            {
-                if (_movement.movementDirection.magnitude < 0.1f) _currentBloom = defaultBloomAngle * crouchBloomMultiplier;
-                else _currentBloom = defaultBloomAngle * crouchBloomMultiplier * walkBloomMultiplier;
-            }
-            if(_aim.CurrentState == _aim.Aim) _currentBloom *= adsBloomMultiplier;
-            
+            // ADD bloom increase here when firing
+            _currentBloom += bloomIncreasePerShot;
+
             float randX = Random.Range(-_currentBloom, _currentBloom);
             float randY = Random.Range(-_currentBloom, _currentBloom);
             float randZ = Random.Range(-_currentBloom, _currentBloom);
-            Vector3 randomRotation = new Vector3(randX,randY,randZ);
-            return barrelPosition.localEulerAngles + randomRotation;
+
+            return barrelPosition.localEulerAngles + new Vector3(randX, randY, randZ);
         }
+
 
     }
 }

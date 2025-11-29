@@ -14,6 +14,7 @@ namespace _Scripts.EnemyScripts
         // Animation event calls this
         public void DealDamage()
         {
+            if (enemy.isDead) return;
             Debug.Log("DealDamage fired!");
             if (hasDealtDamage) return;   
             hasDealtDamage = true;

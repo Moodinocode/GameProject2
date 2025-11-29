@@ -23,6 +23,7 @@ namespace _Scripts.EnemyScripts
 
         public void TakeDamage(int damageAmount)
         {
+            if (isDead) return;
             HP -= damageAmount;
             Debug.Log(damageAmount);
 
@@ -33,10 +34,12 @@ namespace _Scripts.EnemyScripts
                 if (radnomValue == 0)
                 {
                     animator.SetTrigger("DIE1");
+                    Die();
                 }
                 else
                 {
                     animator.SetTrigger("DIE2");
+                    Die();
                 }
             }
             else
@@ -44,6 +47,24 @@ namespace _Scripts.EnemyScripts
                 animator.SetTrigger("DAMAGE");
             }
         }
+        
+        private void Die()
+        {
+            // stop movement
+            if (navAgent != null) navAgent.enabled = false;
+
+            // disable colliders so bullets don't hit body
+            foreach (var col in GetComponentsInChildren<Collider>())
+                col.enabled = false;
+
+            // play a random death animation
+            int randomValue = Random.Range(0, 2);
+            animator.SetTrigger(randomValue == 0 ? "DIE1" : "DIE2");
+
+            // destroy after 7 seconds
+            Destroy(gameObject, 7f);
+        }
+
 
         private void onDrawGizmos()
         {
