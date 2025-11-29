@@ -21,7 +21,7 @@ namespace _Scripts.EnemyScripts
         public float idleDuration = 0f;
         
         [Header("Damage")]
-        public int attackDamage = 20;
+        public int attackDamage = 5;
 
         
     }

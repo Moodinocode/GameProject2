@@ -20,3 +20,4 @@ MonoBehaviour:
   stopChasingDistance: 21
   patrolDuration: 10
   idleDuration: 0
+  attackDamage: 5
