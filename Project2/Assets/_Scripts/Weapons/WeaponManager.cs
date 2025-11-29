@@ -79,8 +79,8 @@ namespace _Scripts.Weapons
                    barrelPosition.rotation
                );
 
-               //Rigidbody currentBulletRigidbody = currentBullet.GetComponent<Rigidbody>();
-               //currentBulletRigidbody.AddForce(barrelPosition.forward * bulletVelocity,ForceMode.Impulse);
+               Rigidbody currentBulletRigidbody = currentBullet.GetComponent<Rigidbody>();
+               currentBulletRigidbody.AddForce(barrelPosition.forward * bulletVelocity,ForceMode.Impulse);
             }
         }
     }

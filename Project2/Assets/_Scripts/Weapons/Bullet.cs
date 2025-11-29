@@ -21,7 +21,6 @@ namespace _Scripts.Weapons
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Collision");
             Debug.Log("Bullet collided with: " + collision.gameObject.name);
             if (collision.gameObject.CompareTag("Zombie")||
                 collision.collider.transform.root.CompareTag("Zombie"))

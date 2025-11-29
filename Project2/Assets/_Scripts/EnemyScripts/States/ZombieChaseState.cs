@@ -28,6 +28,7 @@ namespace _Scripts.EnemyScripts.States
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (enemy.isDead) return;
             agent.SetDestination(player.position);
             animator.transform.LookAt(player);
         
