@@ -7,7 +7,6 @@ namespace _Scripts
 {
     public class Portal : MonoBehaviour
     {
-
         void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
@@ -15,7 +14,7 @@ namespace _Scripts
                 KeyScript keyScript = other.GetComponent<KeyScript>();
                 if (keyScript != null && keyScript.hasKey)
                 {
-                    SceneManager.LoadScene(3);
+                    SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex)+1);
                 }
                 else
                 {
