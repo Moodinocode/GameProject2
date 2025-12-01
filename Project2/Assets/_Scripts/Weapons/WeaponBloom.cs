@@ -15,6 +15,9 @@ namespace _Scripts.Weapons
         [SerializeField] private float bloomIncreasePerShot = 1.4f;
         [SerializeField] private float bloomRecoverySpeed = 5f;  // how fast bloom goes down
 
+        private float timeSinceLastShot = 0f;
+        [SerializeField] private float bloomResetDelay = 1.5f;   // seconds of no firing before full reset
+
         MovementStateManager _movement;
         AimStateManager _aim;
         
@@ -52,6 +55,11 @@ namespace _Scripts.Weapons
 
             // Smooth recovery towards target bloom
             _currentBloom = Mathf.Lerp(_currentBloom, targetBloom, Time.deltaTime * bloomRecoverySpeed);
+            timeSinceLastShot += Time.deltaTime;
+            if (timeSinceLastShot >= bloomResetDelay)
+            {
+                _currentBloom = defaultBloomAngle; 
+            }
         }
 
 
@@ -59,7 +67,7 @@ namespace _Scripts.Weapons
         {
             // ADD bloom increase here when firing
             _currentBloom += bloomIncreasePerShot;
-
+            timeSinceLastShot = 0f;
             float randX = Random.Range(-_currentBloom, _currentBloom);
             float randY = Random.Range(-_currentBloom, _currentBloom);
             float randZ = Random.Range(-_currentBloom, _currentBloom);
