@@ -741,14 +741,14 @@
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.AI.Navigation">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Common.Path.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Common.Path.Editor.dll</HintPath>
@@ -888,14 +888,14 @@
     <Reference Include="Unity.AI.Navigation.Updater">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.VisualScripting.State.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Psdimporter.Editor">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.2D.Psdimporter.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
       <HintPath>C:\Users\user\Desktop\Fall 2025\Game Development\Project2Files\Project2\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
