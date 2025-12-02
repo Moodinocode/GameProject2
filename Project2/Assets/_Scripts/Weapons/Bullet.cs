@@ -10,7 +10,7 @@ namespace _Scripts.Weapons
     {
         [SerializeField] float timeToDestory = 2f;
         float _timer;
-        [SerializeField]int _damage;
+        [SerializeField] int _damage;
 
         void Update()
         {
@@ -21,11 +21,9 @@ namespace _Scripts.Weapons
 
         private void OnCollisionEnter(Collision collision)
         {
-            Debug.Log("Bullet collided with: " + collision.gameObject.name);
             if (collision.gameObject.CompareTag("Zombie")||
                 collision.collider.transform.root.CompareTag("Zombie"))
             {
-                Debug.Log("Hit");
                 Enemy zombie = collision.gameObject.GetComponent<Enemy>();
                 if (zombie != null)
                 {

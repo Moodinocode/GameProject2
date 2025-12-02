@@ -58,7 +58,6 @@ namespace _Scripts.Managers
                 _targetHealthFill,
                 Time.deltaTime * healthLerpSpeed
             );
-            //Debug.Log("Current Fill: " + healthBarFill.fillAmount + " Target: " + _targetHealthFill);
         }
         
 

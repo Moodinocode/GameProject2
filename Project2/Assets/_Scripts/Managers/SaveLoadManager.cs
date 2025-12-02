@@ -27,9 +27,6 @@ namespace _Scripts.Managers
         
         public void QuitGame()
         {
-            Debug.Log("Quit Game button pressed.");
-    
-            
             #if UNITY_EDITOR
                     EditorApplication.isPlaying = false;
             #else

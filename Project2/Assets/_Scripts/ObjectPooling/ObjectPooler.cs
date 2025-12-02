@@ -20,7 +20,6 @@ namespace _Scripts.ObjectPooling
         
         private void Awake()
         {
-            // using singleton for having the same pooler for multiple scenes
             if (Instance == null)
             {
                 Instance = this;
@@ -56,10 +55,8 @@ namespace _Scripts.ObjectPooling
         }
         public GameObject GetFromPool(string tag, Vector3 pos, Quaternion rot)
         {
-            Debug.Log("Getting object from pool with tag: " + tag);
             if (!PoolDictionary.ContainsKey(tag))
             {
-                Debug.LogWarning("Pool with tag: " + tag + " doesn't exist.");
                 return null;
             }
 
@@ -77,7 +74,6 @@ namespace _Scripts.ObjectPooling
             }
 
             PoolDictionary[tag].Enqueue(objectToSpawn);
-            Debug.Log("Object returned to pool with tag: " + tag);
 
             return objectToSpawn;
         }

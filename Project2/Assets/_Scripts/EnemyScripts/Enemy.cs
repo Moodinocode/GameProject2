@@ -24,36 +24,31 @@ namespace _Scripts.EnemyScripts
         public void TakeDamage(int damageAmount)
         {
             if (isDead) return;
+
             HP -= damageAmount;
-            Debug.Log(damageAmount);
 
             if (HP <= 0)
             {
-                isDead = true;
-                int radnomValue = Random.Range(0, 2);
-                if (radnomValue == 0)
-                {
-                    animator.SetTrigger("DIE1");
-                    Die();
-                }
-                else
-                {
-                    animator.SetTrigger("DIE2");
-                    Die();
-                }
+                Die();
+                return;
             }
-            else
-            {
-                animator.SetTrigger("DAMAGE");
-            }
+
+            animator.SetTrigger("DAMAGE");
         }
         
         private void Die()
         {
-            // stop movement
-            if (navAgent != null) navAgent.enabled = false;
+            if (isDead) return;
+            isDead = true;
 
-            // disable colliders so bullets don't hit body
+            // Stop NavMeshAgent
+            if (navAgent != null)
+            {
+                navAgent.isStopped = true;
+                navAgent.ResetPath();
+                navAgent.enabled = false;
+            }
+            
             foreach (var col in GetComponentsInChildren<Collider>())
                 col.enabled = false;
 
