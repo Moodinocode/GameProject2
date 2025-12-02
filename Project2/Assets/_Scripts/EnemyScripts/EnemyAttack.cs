@@ -4,7 +4,7 @@ namespace _Scripts.EnemyScripts
 {
     public class EnemyAttack : MonoBehaviour
     {
-        private Enemy enemy;   // reference to stats
+        private Enemy enemy;
         private bool hasDealtDamage = false;
         private void Start()
         {
@@ -15,7 +15,6 @@ namespace _Scripts.EnemyScripts
         public void DealDamage()
         {
             if (enemy.isDead) return;
-            Debug.Log("DealDamage fired!");
             if (hasDealtDamage) return;   
             hasDealtDamage = true;
             
@@ -28,9 +27,6 @@ namespace _Scripts.EnemyScripts
                     Player p = hit.GetComponent<Player>();
                     if (p != null)
                     {
-                        Debug.Log("Player took damage");
-                        Debug.Log(enemy.stats.attackDamage);
-                        
                         p.TakeDamage(enemy.stats.attackDamage);
                         break;
                     }

@@ -58,7 +58,7 @@ namespace _Scripts.Weapons
             timeSinceLastShot += Time.deltaTime;
             if (timeSinceLastShot >= bloomResetDelay)
             {
-                _currentBloom = defaultBloomAngle; 
+                _currentBloom = Mathf.Lerp(_currentBloom, defaultBloomAngle, Time.deltaTime * bloomRecoverySpeed);
             }
         }
 

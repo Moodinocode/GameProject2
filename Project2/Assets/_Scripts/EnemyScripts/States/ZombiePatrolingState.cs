@@ -46,6 +46,10 @@ namespace _Scripts.EnemyScripts.States
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (enemy.isDead) return;
+            if (!agent.enabled) return;
+            if (!agent.isOnNavMesh) return;
+            
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 agent.SetDestination(waypointsList[Random.Range(0, waypointsList.Count)].position);
@@ -66,6 +70,9 @@ namespace _Scripts.EnemyScripts.States
 
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (!agent.enabled) return;
+            if (!agent.isOnNavMesh) return;
+            
             agent.SetDestination(agent.transform.position);
         }
     }

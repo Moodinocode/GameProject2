@@ -25,6 +25,9 @@ namespace _Scripts.EnemyScripts.States
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
+            if (enemy.isDead) return;
+            if (!agent.enabled) return;
+            if (!agent.isOnNavMesh) return;
             LookAtPlayer();
         
             float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
