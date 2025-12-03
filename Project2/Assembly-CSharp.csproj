@@ -52,6 +52,7 @@
     <Compile Include="Assets\_Scripts\MovementStates\States\RunState.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieChaseState.cs" />
+    <Compile Include="Assets\_Scripts\AttachToGlobalCanvas.cs" />
     <Compile Include="Assets\_Scripts\Portal.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ZombieSpawnController.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\CollectionTrigger.cs" />

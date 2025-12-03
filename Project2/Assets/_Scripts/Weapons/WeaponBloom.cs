@@ -70,9 +70,10 @@ namespace _Scripts.Weapons
             timeSinceLastShot = 0f;
             float randX = Random.Range(-_currentBloom, _currentBloom);
             float randY = Random.Range(-_currentBloom, _currentBloom);
-            float randZ = Random.Range(-_currentBloom, _currentBloom);
+            //float randZ = Random.Range(-_currentBloom, _currentBloom);
 
-            return barrelPosition.localEulerAngles + new Vector3(randX, randY, randZ);
+            return barrelPosition.localEulerAngles + new Vector3(randX, randY, 0f);
+            //return barrelPosition.localEulerAngles + new Vector3(randX, randY, randZ);
         }
 
 
