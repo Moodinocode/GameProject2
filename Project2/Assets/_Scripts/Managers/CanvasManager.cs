@@ -97,14 +97,6 @@ namespace _Scripts.Managers
             SceneManager.LoadScene(1);
         }
         
-        public void OnResumeButton()
-        {
-            if (_isPaused)
-            {
-                TogglePause();
-            }
-        }
-        
         public void OnMainMenuButton()
         {
             Time.timeScale = 1f;
