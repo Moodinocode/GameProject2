@@ -21,7 +21,7 @@ namespace _Scripts.Weapons
         MovementStateManager _movement;
         AimStateManager _aim;
         
-        float _currentBloom;
+        [SerializeField]float _currentBloom;
         
         public float CurrentBloom => _currentBloom;
 

@@ -17,6 +17,7 @@ namespace _Scripts.Weapons
         void Start()
         {
             currentAmmo = clipSize;
+            PlayerUIManager.Instance.UpdateAmmo(currentAmmo, extraAmmo);
         }
     
         public void Reload()
