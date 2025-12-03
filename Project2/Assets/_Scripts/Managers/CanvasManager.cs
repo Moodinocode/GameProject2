@@ -5,7 +5,7 @@ namespace _Scripts.Managers
 {
     public class CanvasManager : MonoBehaviour
     {
-        private static CanvasManager _instance;
+        public static CanvasManager Instance;
         
         private enum UIContext
         {
@@ -24,11 +24,13 @@ namespace _Scripts.Managers
 
         private bool _isPaused;
 
+        public Canvas GameUICanavs;
+
         private void Awake()
         {
-            if (_instance == null)
+            if (Instance == null)
             {
-                _instance = this;
+                Instance = this;
                 DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneLoaded;
             }

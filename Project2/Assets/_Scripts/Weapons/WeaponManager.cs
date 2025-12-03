@@ -61,6 +61,10 @@ namespace _Scripts.Weapons
             _fireRateTimer = 0f;
             barrelPosition.LookAt(_aim.aimPosition);
             barrelPosition.localEulerAngles = _bloom.BloomAngle(barrelPosition);
+            Debug.Log(barrelPosition.localEulerAngles);
+            Debug.Log(barrelPosition.eulerAngles);
+            Debug.Log(barrelPosition.forward);
+            Debug.Log(barrelPosition.position);
             _audioSource.PlayOneShot(gunShot);
             _ammo.currentAmmo--;
             _recoil.TriggerRecoil();
@@ -70,7 +74,7 @@ namespace _Scripts.Weapons
             {
                 _audioSource.PlayOneShot(reloadReminder);
             }
-            for (int i = 0; i < bulletPerShot; i++)
+            for (int i = 0; i < bulletPerShot; i++) // loop for burst weapons
             {
                //GameObject currentBullet = Instantiate(bullet, barrelPosition.position, barrelPosition.rotation);
                GameObject currentBullet = ObjectPooler.Instance.GetFromPool(
