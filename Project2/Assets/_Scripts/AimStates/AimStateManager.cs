@@ -1,3 +1,4 @@
+using _Scripts.Managers;
 using _Scripts.MovementStates;
 using Cinemachine;
 using UnityEngine;
@@ -51,6 +52,7 @@ namespace _Scripts.AimStates
     
         void Update()
         {
+            if (CanvasManager.GamePaused) return;
             _xAxis += Input.GetAxisRaw("Mouse X") * sensitivity;
             _yAxis -= Input.GetAxisRaw("Mouse Y") * sensitivity;
             _yAxis = Mathf.Clamp(_yAxis, -80f, 80f);
@@ -67,6 +69,7 @@ namespace _Scripts.AimStates
 
         private void LateUpdate()
         {
+            if (CanvasManager.GamePaused) return;
             cameraFollowPosition.localEulerAngles = new Vector3(_yAxis, cameraFollowPosition.localEulerAngles.y,cameraFollowPosition.localEulerAngles.z);
             transform.localEulerAngles = new Vector3(transform.eulerAngles.x, _xAxis,transform.localEulerAngles.z);
         }

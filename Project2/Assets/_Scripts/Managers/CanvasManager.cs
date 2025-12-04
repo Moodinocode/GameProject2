@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Managers
 {
@@ -23,8 +24,9 @@ namespace _Scripts.Managers
         public GameObject optionsPanel;
 
         private bool _isPaused;
+        public static bool GamePaused = false; 
 
-        public Canvas GameUICanavs;
+        public Canvas gameUICanavs;
 
         private void Awake()
         {
@@ -88,6 +90,7 @@ namespace _Scripts.Managers
         public void TogglePause()
         {
             _isPaused = !_isPaused;
+            GamePaused = _isPaused;
 
             if (pausePanel)
                 pausePanel.SetActive(_isPaused);

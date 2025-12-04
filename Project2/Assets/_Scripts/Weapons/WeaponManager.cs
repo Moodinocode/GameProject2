@@ -27,6 +27,8 @@ namespace _Scripts.Weapons
         ActionStateManager _action;
         WeaponRecoil _recoil;
         WeaponBloom _bloom;
+
+        private bool _releasedAfterPause = true;
         
         
         void Start()
@@ -42,11 +44,24 @@ namespace _Scripts.Weapons
         
         void Update()
         {
-           if (ShouldFire()) Fire(); 
+            if (CanvasManager.GamePaused)
+            {
+                _releasedAfterPause = false;
+                return;
+            }
+
+            if (!Input.GetKey(KeyCode.Mouse0))
+                _releasedAfterPause = true;
+            
+            if (ShouldFire()) Fire(); 
+
         }
 
         bool ShouldFire()
         {
+            if (CanvasManager.GamePaused) return false;
+            if (!_releasedAfterPause) return false;
+
             _fireRateTimer += Time.deltaTime;
             if (_fireRateTimer < fireRate) return false;
             if (_ammo.currentAmmo == 0) return false;

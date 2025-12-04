@@ -9,7 +9,7 @@ namespace _Scripts
         {
             if (CanvasManager.Instance != null)
             {
-                transform.SetParent(CanvasManager.Instance.GameUICanavs.transform, false);
+                transform.SetParent(CanvasManager.Instance.gameUICanavs.transform, false);
             }
             else
             {
