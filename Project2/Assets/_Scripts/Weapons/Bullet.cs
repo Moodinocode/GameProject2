@@ -37,6 +37,10 @@ namespace _Scripts.Weapons
         public void OnObjectSpawn()
         {
             _timer = 0f;
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;          // Reset old leftover force
+            rb.angularVelocity = Vector3.zero;   // Reset spin
+            transform.localRotation = Quaternion.identity;
         }
     }
 }
