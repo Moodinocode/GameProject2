@@ -65,14 +65,21 @@ namespace _Scripts.Weapons
             Debug.Log(barrelPosition.eulerAngles);
             Debug.Log(barrelPosition.forward);
             Debug.Log(barrelPosition.position);
-            _audioSource.PlayOneShot(gunShot);
+            float randomPitch = Random.Range(0.95f, 1.05f);   // tiny pitch variation
+            float randomVolume = Random.Range(0.9f, 1.0f);    // slight volume variation
+
+            _audioSource.pitch = randomPitch;
+            _audioSource.PlayOneShot(gunShot, randomVolume);
+
+            //_audioSource.PlayOneShot(gunShot);
             _ammo.currentAmmo--;
             _recoil.TriggerRecoil();
             PlayerUIManager.Instance.UpdateAmmo(_ammo.currentAmmo, _ammo.extraAmmo);
             
             if (_ammo.currentAmmo == 5)
             {
-                _audioSource.PlayOneShot(reloadReminder);
+                _audioSource.pitch = 1f;
+                _audioSource.PlayOneShot(reloadReminder,1f);
             }
             for (int i = 0; i < bulletPerShot; i++) // loop for burst weapons
             {

@@ -10,6 +10,7 @@ namespace _Scripts.EnemyScripts.States
         private Transform player;
         Enemy enemy;
         EnemyStats stats;
+        ZombieAudio audio;
         //public float detectionAreaRadius = 18f;
     
 
@@ -20,13 +21,15 @@ namespace _Scripts.EnemyScripts.States
             timer = 0;
             player = GameObject.FindGameObjectWithTag("Player").transform;
         
-
+            audio = animator.GetComponent<ZombieAudio>();
         }
 
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             if (enemy.isDead) return;
+            if (audio != null)
+                audio.TickPatrol();
             
             timer += Time.deltaTime;
             if (timer > stats.idleDuration)

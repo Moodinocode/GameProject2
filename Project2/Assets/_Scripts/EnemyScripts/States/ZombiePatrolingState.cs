@@ -11,6 +11,7 @@ namespace _Scripts.EnemyScripts.States
 
         private Transform player;
         NavMeshAgent agent;
+        ZombieAudio audio;
     
         //public float detectionArea = 18f;
         //public float patrolSpeed = 2f;
@@ -27,6 +28,7 @@ namespace _Scripts.EnemyScripts.States
             agent = animator.GetComponent<NavMeshAgent>();
             enemy = animator.GetComponent<Enemy>();
             stats = enemy.stats;
+            audio = animator.GetComponent<ZombieAudio>();
 
         
             agent.speed = stats.patrolSpeed;
@@ -49,6 +51,9 @@ namespace _Scripts.EnemyScripts.States
             if (enemy.isDead) return;
             if (!agent.enabled) return;
             if (!agent.isOnNavMesh) return;
+            
+            if (audio != null)
+                audio.TickPatrol();
             
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
