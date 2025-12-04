@@ -91,6 +91,7 @@
     <Compile Include="Assets\_Scripts\PlayerActions\DefaultState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombiePatrolingState.cs" />
     <Compile Include="Assets\_Scripts\AimStates\HipFireState.cs" />
+    <Compile Include="Assets\_Scripts\Managers\SaveSystem.cs" />
     <Compile Include="Assets\_Scripts\MovementStates\MovementStateManager.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\Explosion.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponRecoil.cs" />

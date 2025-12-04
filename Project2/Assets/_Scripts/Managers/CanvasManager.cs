@@ -104,6 +104,7 @@ namespace _Scripts.Managers
         
         public void OnMainMenuButton()
         {
+            TogglePause();
             Time.timeScale = 1f;
             SceneManager.LoadScene(0); 
         }

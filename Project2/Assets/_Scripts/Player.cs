@@ -1,6 +1,7 @@
 using System.Collections;
 using _Scripts.Managers;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace _Scripts
@@ -8,12 +9,16 @@ namespace _Scripts
     public class Player : MonoBehaviour
     {
         private static readonly int Death = Animator.StringToHash("Death");
-        public int hp = 100;
+        public float hp = 100;
         public GameObject bloodyScreen;
         public Image fadeImage;
         
         [HideInInspector] public Animator anim;
-   
+
+        void Awake()
+        {
+            SaveLoadManager.Instance.player = this;
+        }
         void Start()
         {
             anim = GetComponent<Animator>();
@@ -78,6 +83,33 @@ namespace _Scripts
                 bloodyScreen.SetActive(false);
             }
         }
+        
+        public void Save(ref PlayerSaveData data)
+        {
+            data.position = transform.position; 
+            data.health = hp;
+        }
+
+        public void Load(PlayerSaveData data)
+        {
+            var cc = GetComponent<CharacterController>();
+            if (cc != null) cc.enabled = false;
+
+            transform.position = data.position;
+            hp = data.health;
+
+            PlayerUIManager.Instance.UpdateHealth(hp, 100);
+
+            if (cc != null) cc.enabled = true;
+        }
+
    
     }
+}
+
+[System.Serializable]
+public struct PlayerSaveData
+{
+    public Vector3 position;
+    public float health;
 }
