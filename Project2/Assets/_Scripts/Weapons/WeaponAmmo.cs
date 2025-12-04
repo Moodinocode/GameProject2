@@ -13,7 +13,10 @@ namespace _Scripts.Weapons
         public AudioClip magOutSound;
         public AudioClip releaseSlideSound;
         
-
+        void Awake()
+        {
+            SaveLoadManager.Instance.ammo = this;
+        }
         void Start()
         {
             currentAmmo = clipSize;
@@ -43,5 +46,27 @@ namespace _Scripts.Weapons
             } 
             PlayerUIManager.Instance.UpdateAmmo(currentAmmo, extraAmmo);
         }
+        
+        public void Save(ref AmmoSaveData data)
+        {
+            data.currentAmmo = currentAmmo;
+            data.extraAmmo = extraAmmo;
+        }
+
+        public void Load(AmmoSaveData data)
+        {
+            currentAmmo = data.currentAmmo;
+            extraAmmo = data.extraAmmo;
+            PlayerUIManager.Instance.UpdateAmmo(currentAmmo, extraAmmo);
+        }
+        
     }
+}
+
+
+[System.Serializable]
+public struct AmmoSaveData
+{
+    public int currentAmmo;
+    public int extraAmmo;
 }

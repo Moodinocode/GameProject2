@@ -38,12 +38,12 @@ namespace _Scripts.ObjectPooling
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             // If we return to MAIN MENU, destroy pooler completely
-            if (scene.buildIndex == 0)
-            {
-                Destroy(gameObject);
-                Instance = null;
-                return;
-            }
+            //if (scene.buildIndex == 0)
+            //{
+            //    Destroy(gameObject);
+            //    Instance = null;
+           //     return;
+           // }
 
             // If we enter a gameplay scene, rebuild pools
             BuildPools();
