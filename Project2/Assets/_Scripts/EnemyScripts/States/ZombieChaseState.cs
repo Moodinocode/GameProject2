@@ -7,6 +7,7 @@ namespace _Scripts.EnemyScripts.States
     {
         NavMeshAgent agent;
         Transform player;
+        ZombieAudio audio;
 
         /*public float chaseSpeed = 6f;
         public float stopChasingDistance = 21;
@@ -22,6 +23,7 @@ namespace _Scripts.EnemyScripts.States
             enemy = animator.GetComponent<Enemy>();
             stats = enemy.stats;
             agent.speed = stats.chaseSpeed;
+            audio = animator.GetComponent<ZombieAudio>();
 
         }
 
@@ -31,6 +33,9 @@ namespace _Scripts.EnemyScripts.States
             if (enemy.isDead) return;
             if (!agent.enabled) return;
             if (!agent.isOnNavMesh) return;
+            
+            if (audio != null)
+                audio.TickChase();
 
             agent.SetDestination(player.position);
             animator.transform.LookAt(player);

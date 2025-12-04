@@ -6,9 +6,11 @@ namespace _Scripts.EnemyScripts
     {
         private Enemy enemy;
         private bool hasDealtDamage = false;
+        private ZombieAudio audio;
         private void Start()
         {
             enemy = GetComponent<Enemy>();
+            audio = GetComponent<ZombieAudio>();
         }
 
         // Animation event calls this
@@ -17,6 +19,9 @@ namespace _Scripts.EnemyScripts
             if (enemy.isDead) return;
             if (hasDealtDamage) return;   
             hasDealtDamage = true;
+            
+            if (audio != null)
+                audio.PlayAttack();
             
             Collider[] hits = Physics.OverlapSphere(transform.position, 2f);
 

@@ -56,6 +56,7 @@
     <Compile Include="Assets\_Scripts\Portal.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ZombieSpawnController.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\CollectionTrigger.cs" />
+    <Compile Include="Assets\_Scripts\EnemyScripts\ZombieAudio.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponBloom.cs" />
     <Compile Include="Assets\_Scripts\Weapons\Bullet.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\BlockoutSceneViewCubeGizmo.cs" />

@@ -11,6 +11,7 @@ namespace _Scripts.EnemyScripts
         public bool isDead = false;
     
         private NavMeshAgent navAgent;
+        private ZombieAudio audio; 
     
     
     
@@ -18,6 +19,7 @@ namespace _Scripts.EnemyScripts
         {
             animator = GetComponent<Animator>();
             navAgent = GetComponent<NavMeshAgent>();
+            audio = GetComponent<ZombieAudio>();
             HP = stats.maxHP;
         }
 
@@ -31,8 +33,8 @@ namespace _Scripts.EnemyScripts
             {
                 Die();
                 return;
-            }
-
+            } 
+            if (audio != null) audio.PlayHurt();
             animator.SetTrigger("DAMAGE");
         }
         
@@ -40,6 +42,9 @@ namespace _Scripts.EnemyScripts
         {
             if (isDead) return;
             isDead = true;
+            
+            if (audio != null)
+                audio.PlayDeath();
 
             // Stop NavMeshAgent
             if (navAgent != null)
