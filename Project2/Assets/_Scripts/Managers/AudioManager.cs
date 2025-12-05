@@ -37,7 +37,7 @@ namespace _Scripts.Managers
 
 
         // Sliders use 0..1, mixer uses dB
-        public void SetUISFXVolume(float value)
+        public void SetUisfxVolume(float value)
         {
             SetMixerVolume("UISFXVolume", value);
         }

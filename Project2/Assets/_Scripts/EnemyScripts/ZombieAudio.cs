@@ -11,13 +11,13 @@ namespace _Scripts.EnemyScripts
         public AudioClip[] patrolClips;
         public float patrolMinDelay = 4f;
         public float patrolMaxDelay = 9f;
-        private float patrolTimer;
+        private float _patrolTimer;
 
         [Header("Chase Sounds")]
         public AudioClip[] chaseClips;
         public float chaseMinDelay = 2f;
         public float chaseMaxDelay = 4f;
-        private float chaseTimer;
+        private float _chaseTimer;
 
         [Header("Attack Sounds")]
         public AudioClip[] attackClips;
@@ -35,8 +35,8 @@ namespace _Scripts.EnemyScripts
             ResetChaseTimer();
         }
         
-        void ResetPatrolTimer() => patrolTimer = Random.Range(patrolMinDelay, patrolMaxDelay);
-        void ResetChaseTimer() => chaseTimer = Random.Range(chaseMinDelay, chaseMaxDelay);
+        void ResetPatrolTimer() => _patrolTimer = Random.Range(patrolMinDelay, patrolMaxDelay);
+        void ResetChaseTimer() => _chaseTimer = Random.Range(chaseMinDelay, chaseMaxDelay);
         
         public void PlayAttack() => PlayRandom(attackClips);
         public void PlayHurt() => PlayRandom(hurtClips);
@@ -44,8 +44,8 @@ namespace _Scripts.EnemyScripts
 
         public void TickPatrol()
         {
-            patrolTimer -= Time.deltaTime;
-            if (patrolTimer <= 0)
+            _patrolTimer -= Time.deltaTime;
+            if (_patrolTimer <= 0)
             {
                 PlayRandom(patrolClips);
                 ResetPatrolTimer();
@@ -54,8 +54,8 @@ namespace _Scripts.EnemyScripts
 
         public void TickChase()
         {
-            chaseTimer -= Time.deltaTime;
-            if (chaseTimer <= 0)
+            _chaseTimer -= Time.deltaTime;
+            if (_chaseTimer <= 0)
             {
                 PlayRandom(chaseClips);
                 ResetChaseTimer();

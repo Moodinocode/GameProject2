@@ -1,11 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.EnemyScripts
 {
     [CreateAssetMenu(fileName = "EnemyStats", menuName = "Enemy/Stats")]
     public class EnemyStats : ScriptableObject
     {
-        [Header("Health")] public int maxHP = 100;
+        [FormerlySerializedAs("maxHP")] [Header("Health")] public int maxHp = 100;
         
         [Header("Movement")]
         public float patrolSpeed = 2f;

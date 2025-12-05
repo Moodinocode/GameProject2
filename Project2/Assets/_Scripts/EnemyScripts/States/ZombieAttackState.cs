@@ -5,19 +5,20 @@ namespace _Scripts.EnemyScripts.States
 {
     public class ZombieAttackState : StateMachineBehaviour
     {
-        Transform player;
-        NavMeshAgent agent;
+        private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
+        Transform _player;
+        NavMeshAgent _agent;
 
         //public float stopAttackingDistance = 2.5f;
-        Enemy enemy;
-        EnemyStats stats;
+        Enemy _enemy;
+        EnemyStats _stats;
     
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            agent = animator.GetComponent<NavMeshAgent>();
-            enemy = animator.GetComponent<Enemy>();
-            stats = enemy.stats;
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+            _agent = animator.GetComponent<NavMeshAgent>();
+            _enemy = animator.GetComponent<Enemy>();
+            _stats = _enemy.stats;
 
 
         }
@@ -25,26 +26,26 @@ namespace _Scripts.EnemyScripts.States
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (enemy.isDead) return;
-            if (!agent.enabled) return;
-            if (!agent.isOnNavMesh) return;
+            if (_enemy.isDead) return;
+            if (!_agent.enabled) return;
+            if (!_agent.isOnNavMesh) return;
             LookAtPlayer();
         
-            float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
+            float distanceFromPlayer = Vector3.Distance(_player.position, animator.transform.position);
 
-            if (distanceFromPlayer > stats.attackRange)
+            if (distanceFromPlayer > _stats.attackRange)
             {
-                animator.SetBool("isAttacking", false);
+                animator.SetBool(IsAttacking, false);
             }
         }
 
         private void LookAtPlayer()
         {
-            Vector3 direction = player.position - agent.transform.position;
-            agent.transform.rotation = Quaternion.LookRotation(direction);
+            Vector3 direction = _player.position - _agent.transform.position;
+            _agent.transform.rotation = Quaternion.LookRotation(direction);
         
-            var yRotation = agent.transform.eulerAngles.y;
-            agent.transform.rotation = Quaternion.Euler(0, yRotation, 0);
+            var yRotation = _agent.transform.eulerAngles.y;
+            _agent.transform.rotation = Quaternion.Euler(0, yRotation, 0);
         }
     }
 }

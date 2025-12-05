@@ -1,6 +1,7 @@
 using _Scripts.AimStates;
 using _Scripts.MovementStates;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Weapons
 {
@@ -15,15 +16,15 @@ namespace _Scripts.Weapons
         [SerializeField] private float bloomIncreasePerShot = 1.4f;
         [SerializeField] private float bloomRecoverySpeed = 5f;  // how fast bloom goes down
 
-        private float timeSinceLastShot = 0f;
+        private float _timeSinceLastShot = 0f;
         [SerializeField] private float bloomResetDelay = 1.5f;   // seconds of no firing before full reset
 
         MovementStateManager _movement;
         AimStateManager _aim;
         
-        [SerializeField]float _currentBloom;
+        [FormerlySerializedAs("_currentBloom")] [SerializeField]float currentBloom;
         
-        public float CurrentBloom => _currentBloom;
+        public float CurrentBloom => currentBloom;
 
 
         void Start()
@@ -54,11 +55,11 @@ namespace _Scripts.Weapons
                 targetBloom *= adsBloomMultiplier;
 
             // Smooth recovery towards target bloom
-            _currentBloom = Mathf.Lerp(_currentBloom, targetBloom, Time.deltaTime * bloomRecoverySpeed);
-            timeSinceLastShot += Time.deltaTime;
-            if (timeSinceLastShot >= bloomResetDelay)
+            currentBloom = Mathf.Lerp(currentBloom, targetBloom, Time.deltaTime * bloomRecoverySpeed);
+            _timeSinceLastShot += Time.deltaTime;
+            if (_timeSinceLastShot >= bloomResetDelay)
             {
-                _currentBloom = Mathf.Lerp(_currentBloom, defaultBloomAngle, Time.deltaTime * bloomRecoverySpeed);
+                currentBloom = Mathf.Lerp(currentBloom, defaultBloomAngle, Time.deltaTime * bloomRecoverySpeed);
             }
         }
 
@@ -66,10 +67,10 @@ namespace _Scripts.Weapons
         public Vector3 BloomAngle(Transform barrelPosition)
         {
             // ADD bloom increase here when firing
-            _currentBloom += bloomIncreasePerShot;
-            timeSinceLastShot = 0f;
-            float randX = Random.Range(-_currentBloom, _currentBloom);
-            float randY = Random.Range(-_currentBloom, _currentBloom);
+            currentBloom += bloomIncreasePerShot;
+            _timeSinceLastShot = 0f;
+            float randX = Random.Range(-currentBloom, currentBloom);
+            float randY = Random.Range(-currentBloom, currentBloom);
             //float randZ = Random.Range(-_currentBloom, _currentBloom);
 
             return barrelPosition.localEulerAngles + new Vector3(randX, randY, 0f);

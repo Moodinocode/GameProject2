@@ -6,79 +6,82 @@ namespace _Scripts.EnemyScripts.States
 {
     public class ZombiePatrolingState : StateMachineBehaviour
     {
-        float timer;
+        private static readonly int IsPatroling = Animator.StringToHash("isPatroling");
+        private static readonly int IsChasing = Animator.StringToHash("isChasing");
+
+        float _timer;
         //public float patrolingTime = 10f;
 
-        private Transform player;
-        NavMeshAgent agent;
-        ZombieAudio audio;
+        private Transform _player;
+        NavMeshAgent _agent;
+        ZombieAudio _audio;
     
         //public float detectionArea = 18f;
         //public float patrolSpeed = 2f;
+
+        readonly List<Transform> _waypointsList = new List<Transform>();
     
-        List<Transform> waypointsList = new List<Transform>();
-    
-        Enemy enemy;
-        EnemyStats stats;
+        Enemy _enemy;
+        EnemyStats _stats;
     
    
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            agent = animator.GetComponent<NavMeshAgent>();
-            enemy = animator.GetComponent<Enemy>();
-            stats = enemy.stats;
-            audio = animator.GetComponent<ZombieAudio>();
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+            _agent = animator.GetComponent<NavMeshAgent>();
+            _enemy = animator.GetComponent<Enemy>();
+            _stats = _enemy.stats;
+            _audio = animator.GetComponent<ZombieAudio>();
 
         
-            agent.speed = stats.patrolSpeed;
-            timer = 0;
+            _agent.speed = _stats.patrolSpeed;
+            _timer = 0;
         
             GameObject waypointCluster = GameObject.FindGameObjectWithTag("Waypoints");
             foreach (Transform t in waypointCluster.transform)
             {
-                waypointsList.Add(t);
+                _waypointsList.Add(t);
             }
         
-            Vector3 nextPosition = waypointsList[Random.Range(0 , waypointsList.Count)].position;
-            agent.SetDestination(nextPosition);
+            Vector3 nextPosition = _waypointsList[Random.Range(0 , _waypointsList.Count)].position;
+            _agent.SetDestination(nextPosition);
 
         }
 
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (enemy.isDead) return;
-            if (!agent.enabled) return;
-            if (!agent.isOnNavMesh) return;
+            if (_enemy.isDead) return;
+            if (!_agent.enabled) return;
+            if (!_agent.isOnNavMesh) return;
             
-            if (audio != null)
-                audio.TickPatrol();
+            if (_audio != null)
+                _audio.TickPatrol();
             
-            if (agent.remainingDistance <= agent.stoppingDistance)
+            if (_agent.remainingDistance <= _agent.stoppingDistance)
             {
-                agent.SetDestination(waypointsList[Random.Range(0, waypointsList.Count)].position);
+                _agent.SetDestination(_waypointsList[Random.Range(0, _waypointsList.Count)].position);
             
             }
-            timer += Time.deltaTime;
-            if (timer > stats.patrolDuration)
+            _timer += Time.deltaTime;
+            if (_timer > _stats.patrolDuration)
             {
-                animator.SetBool("isPatroling", false);
+                animator.SetBool(IsPatroling, false);
             }
-            float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
+            float distanceFromPlayer = Vector3.Distance(_player.position, animator.transform.position);
 
-            if (distanceFromPlayer <  stats.detectionRadius)
+            if (distanceFromPlayer <  _stats.detectionRadius)
             {
-                animator.SetBool("isChasing" , true);
+                animator.SetBool(IsChasing , true);
             }
         }
 
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (!agent.enabled) return;
-            if (!agent.isOnNavMesh) return;
+            if (!_agent.enabled) return;
+            if (!_agent.isOnNavMesh) return;
             
-            agent.SetDestination(agent.transform.position);
+            _agent.SetDestination(_agent.transform.position);
         }
     }
 }

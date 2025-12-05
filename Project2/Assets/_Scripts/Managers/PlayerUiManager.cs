@@ -60,12 +60,15 @@ namespace _Scripts.Managers
             );
         }
         
-
-
-
+        
         public void ShowKeyIcon()
         {
             keyIcon.gameObject.SetActive(true);
+        }
+        
+        public void HideKeyIcon()
+        {
+            keyIcon.gameObject.SetActive(false);
         }
 
         public void ShowPortalMessage()
