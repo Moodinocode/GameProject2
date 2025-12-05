@@ -47,6 +47,8 @@ namespace _Scripts
        
             // dying animation
             anim.SetTrigger(Death);
+            
+            CanvasManager.Instance.ShowGameOver();
         }
 
         private IEnumerator BloodyScreenEffect()
