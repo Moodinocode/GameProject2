@@ -1,7 +1,7 @@
 using _Scripts.Managers;
 using UnityEngine;
 
-namespace _Scripts
+namespace _Scripts.UI_Scripts
 {
     public class AttachToGlobalCanvas : MonoBehaviour
     {

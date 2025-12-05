@@ -52,7 +52,6 @@
     <Compile Include="Assets\_Scripts\MovementStates\States\RunState.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombieChaseState.cs" />
-    <Compile Include="Assets\_Scripts\AttachToGlobalCanvas.cs" />
     <Compile Include="Assets\_Scripts\Portal.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\ZombieSpawnController.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\CollectionTrigger.cs" />
@@ -83,11 +82,13 @@
     <Compile Include="Assets\_Scripts\Managers\PostProcessingManager.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\CameraForceDepthRender.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\EnemyAttack.cs" />
+    <Compile Include="Assets\_Scripts\UI Scripts\AttachToGlobalCanvas.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\StarterAssets\ThirdPersonController\Scripts\BasicRigidBodyPush.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimState.cs" />
     <Compile Include="Assets\_Scripts\Managers\PlayerUiManager.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\BlockoutHelper.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
+    <Compile Include="Assets\_Scripts\UI Scripts\DeathRoast.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\DefaultState.cs" />
     <Compile Include="Assets\_Scripts\EnemyScripts\States\ZombiePatrolingState.cs" />
     <Compile Include="Assets\_Scripts\AimStates\HipFireState.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Assets\_Scripts\Player.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\BlockoutSection.cs" />
     <Compile Include="Assets\_Scripts\Managers\EventSystemManager.cs" />
+    <Compile Include="Assets\_Scripts\UI Scripts\Credits.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ActionBaseState.cs" />
     <Compile Include="Assets\_Scripts\ChestScripts\KeyScript.cs" />
     <Compile Include="Assets\_Scripts\PlayerActions\ReloadState.cs" />

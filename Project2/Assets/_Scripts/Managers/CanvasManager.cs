@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,7 @@ namespace _Scripts.Managers
         public GameObject gameUIPanel;
         public GameObject pausePanel;
         public GameObject optionsPanel;
+        public GameObject gameOverPanel;
 
         private bool _isPaused;
         public static bool GamePaused = false; 
@@ -83,6 +85,7 @@ namespace _Scripts.Managers
             if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
             if (gameUIPanel != null) gameUIPanel.SetActive(false);
             if (pausePanel != null) pausePanel.SetActive(false);
+            if (gameOverPanel != null) gameOverPanel.SetActive(false);
             
             DisableAllDynamicUI();
         }
@@ -160,6 +163,35 @@ namespace _Scripts.Managers
                 if (ui != null)
                     ui.SetActive(false);
             }
+        }
+
+        public void ShowGameOver()
+        {
+            if (pausePanel) pausePanel.SetActive(false);
+            if (gameUIPanel) gameUIPanel.SetActive(false);
+            if (mainMenuPanel) mainMenuPanel.SetActive(false);
+
+            DisableAllDynamicUI();
+
+            
+            if (gameOverPanel)
+                gameOverPanel.SetActive(true);
+
+           
+            Time.timeScale = 0f;
+            GamePaused = true;
+            
+            StartCoroutine(AutoReturnToMainMenu());
+        }
+        
+        private IEnumerator AutoReturnToMainMenu()
+        {
+            yield return new WaitForSecondsRealtime(7f);
+            
+            Time.timeScale = 1f;
+            
+            SceneManager.LoadScene(0);
+            gameOverPanel.SetActive(false);
         }
 
 
