@@ -59,7 +59,7 @@ namespace _Scripts
             var image = bloodyScreen.GetComponentInChildren<Image>();
 
             Color startColor = image.color;
-            startColor.a = 1f;
+            startColor.a = 0.5f;
             image.color = startColor;
 
             float duration = 3f;
@@ -67,7 +67,7 @@ namespace _Scripts
 
             while (elapsedTime < duration)
             {
-                float alpha = Mathf.Lerp(1f, 0f, elapsedTime / duration);
+                float alpha = Mathf.Lerp(startColor.a, 0f, elapsedTime / duration);
 
                 Color newColor = image.color;
                 newColor.a = alpha;
