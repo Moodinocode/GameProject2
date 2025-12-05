@@ -55,6 +55,11 @@ namespace _Scripts.Managers
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
+            if (scene.buildIndex == 3)
+            {
+                DisableAllChildren();
+                return;
+            }
             if (scene.buildIndex == 0) 
             {
                 ShowMainMenu();
@@ -70,6 +75,15 @@ namespace _Scripts.Managers
             _isPaused = false;
             Time.timeScale = 1f;
         }
+        
+        private void DisableAllChildren()
+        {
+            foreach (Transform child in transform)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+
 
         void Update()
         {

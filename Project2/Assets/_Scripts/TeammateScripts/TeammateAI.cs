@@ -46,7 +46,7 @@ namespace _Scripts.TeammateScripts
             {
                 //_agent.SetDestination(player.position);
                 NavMeshHit hit;
-                if (NavMesh.SamplePosition(player.position, out hit, 2f, NavMesh.AllAreas))
+                if (NavMesh.SamplePosition(player.position, out hit, 10f, NavMesh.AllAreas))
                 {
                     _agent.SetDestination(hit.position);
                 }
