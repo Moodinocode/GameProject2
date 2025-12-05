@@ -1,3 +1,4 @@
+using _Scripts.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,10 @@ namespace _Scripts.ChestScripts
         private bool _opened;
         private AudioSource _audioSource;
         
+        void Awake()
+        {
+            SaveLoadManager.Instance.chestState = this;
+        }
         
         void Start()
         {
@@ -82,5 +87,31 @@ namespace _Scripts.ChestScripts
             _audioSource.PlayOneShot(chestOpenSound);
             key.SetActive(true);
         }
+        public void Save(ref ChestSaveData data)
+        {
+            data.opened = _opened;
+        }
+
+        public void Load(ChestSaveData data,KeySaveData keyData)
+        {
+            _opened = data.opened;
+
+            if (_opened)
+            {
+                // Force chest open visually
+                anim.SetTrigger(Open);
+                if (keyData.hasKey)
+                {
+                    key.SetActive(false); 
+                }
+                interactUI.SetActive(false);
+            }
+        }
     }
+}
+
+
+[System.Serializable]
+public struct ChestSaveData {
+    public bool opened;
 }

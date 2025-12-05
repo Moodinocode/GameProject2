@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -7,6 +8,9 @@ namespace _Scripts.Managers
     public class CanvasManager : MonoBehaviour
     {
         public static CanvasManager Instance;
+        
+        private readonly List<GameObject> _dynamicUI = new List<GameObject>();
+
         
         private enum UIContext
         {
@@ -79,6 +83,8 @@ namespace _Scripts.Managers
             if (mainMenuPanel != null) mainMenuPanel.SetActive(true);
             if (gameUIPanel != null) gameUIPanel.SetActive(false);
             if (pausePanel != null) pausePanel.SetActive(false);
+            
+            DisableAllDynamicUI();
         }
 
         public void ShowGameUI()
@@ -106,6 +112,8 @@ namespace _Scripts.Managers
         {
             TogglePause();
             Time.timeScale = 1f;
+            
+            DisableAllDynamicUI();
             SceneManager.LoadScene(0); 
         }
         
@@ -138,6 +146,23 @@ namespace _Scripts.Managers
                     break;
             }
         }
+        
+        public void RegisterDynamicUI(GameObject uiObject)
+        {
+            if (!_dynamicUI.Contains(uiObject))
+                _dynamicUI.Add(uiObject);
+        }
+        
+        private void DisableAllDynamicUI()
+        {
+            foreach (var ui in _dynamicUI)
+            {
+                if (ui != null)
+                    ui.SetActive(false);
+            }
+        }
+
+
 
     }
 }
