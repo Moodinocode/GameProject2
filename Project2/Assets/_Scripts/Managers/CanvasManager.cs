@@ -12,14 +12,13 @@ namespace _Scripts.Managers
         
         private readonly List<GameObject> _dynamicUI = new List<GameObject>();
 
-        
         private enum UIContext
         {
             None,
             MainMenu,
             PauseMenu
         }
-        
+
         private UIContext _currentContext = UIContext.None;
 
         [Header("Panels")]
@@ -51,6 +50,7 @@ namespace _Scripts.Managers
         private void Start()
         {
             ShowMainMenu();
+            ShowCursor(); 
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -60,22 +60,25 @@ namespace _Scripts.Managers
                 DisableAllChildren();
                 return;
             }
-            if (scene.buildIndex == 0) 
+
+            if (scene.buildIndex == 0)
             {
                 ShowMainMenu();
+                ShowCursor();  
             }
             else
             {
                 ShowGameUI();
+                HideCursor();  
             }
-            
+
             if (pausePanel != null)
                 pausePanel.SetActive(false);
 
             _isPaused = false;
             Time.timeScale = 1f;
         }
-        
+
         private void DisableAllChildren()
         {
             foreach (Transform child in transform)
@@ -90,7 +93,7 @@ namespace _Scripts.Managers
             if (SceneManager.GetActiveScene().buildIndex != 0)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
-                    TogglePause();
+                    TogglePause();  
             }
         }
 
@@ -102,12 +105,15 @@ namespace _Scripts.Managers
             if (gameOverPanel != null) gameOverPanel.SetActive(false);
             
             DisableAllDynamicUI();
+            ShowCursor();   
         }
 
         public void ShowGameUI()
         {
             if (mainMenuPanel != null) mainMenuPanel.SetActive(false);
             if (gameUIPanel != null) gameUIPanel.SetActive(true);
+
+            HideCursor();   
         }
 
         public void TogglePause()
@@ -119,33 +125,42 @@ namespace _Scripts.Managers
                 pausePanel.SetActive(_isPaused);
 
             Time.timeScale = _isPaused ? 0f : 1f;
+
+            if (_isPaused)
+                ShowCursor();   
+            else
+                HideCursor();  
         }
+
         public void OnPlayButton()
         {
             SceneManager.LoadScene(1);
         }
-        
+
         public void OnMainMenuButton()
         {
             TogglePause();
             Time.timeScale = 1f;
-            
+
             DisableAllDynamicUI();
-            SceneManager.LoadScene(0); 
+            SceneManager.LoadScene(0);
+
+            ShowCursor();   
         }
-        
+
         public void OpenOptions()
         {
             if (mainMenuPanel.activeSelf)
                 _currentContext = UIContext.MainMenu;
             else if (pausePanel.activeSelf)
                 _currentContext = UIContext.PauseMenu;
-            
+
             mainMenuPanel.SetActive(false);
             pausePanel.SetActive(false);
             gameUIPanel.SetActive(false);
 
             optionsPanel.SetActive(true);
+            ShowCursor();   
         }
 
         public void CloseOptions()
@@ -156,20 +171,26 @@ namespace _Scripts.Managers
             {
                 case UIContext.MainMenu:
                     mainMenuPanel.SetActive(true);
+                    ShowCursor();
                     break;
 
                 case UIContext.PauseMenu:
                     pausePanel.SetActive(true);
+                    ShowCursor();
+                    break;
+
+                default:
+                    HideCursor();
                     break;
             }
         }
-        
+
         public void RegisterDynamicUI(GameObject uiObject)
         {
             if (!_dynamicUI.Contains(uiObject))
                 _dynamicUI.Add(uiObject);
         }
-        
+
         private void DisableAllDynamicUI()
         {
             foreach (var ui in _dynamicUI)
@@ -187,28 +208,39 @@ namespace _Scripts.Managers
 
             DisableAllDynamicUI();
 
-            
             if (gameOverPanel)
                 gameOverPanel.SetActive(true);
 
-           
             Time.timeScale = 0f;
             GamePaused = true;
-            
+
+            ShowCursor();   
+
             StartCoroutine(AutoReturnToMainMenu());
         }
-        
+
         private IEnumerator AutoReturnToMainMenu()
         {
             yield return new WaitForSecondsRealtime(7f);
-            
+
             Time.timeScale = 1f;
-            
+
             SceneManager.LoadScene(0);
             gameOverPanel.SetActive(false);
+
+            ShowCursor();   
         }
 
+        private void HideCursor()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
-
+        private void ShowCursor()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 }
