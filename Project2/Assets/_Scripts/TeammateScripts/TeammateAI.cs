@@ -44,7 +44,12 @@ namespace _Scripts.TeammateScripts
 
             if (distance > followDistance)
             {
-                _agent.SetDestination(player.position);
+                //_agent.SetDestination(player.position);
+                NavMeshHit hit;
+                if (NavMesh.SamplePosition(player.position, out hit, 2f, NavMesh.AllAreas))
+                {
+                    _agent.SetDestination(hit.position);
+                }
             }
             else
             {
@@ -59,7 +64,7 @@ namespace _Scripts.TeammateScripts
 
             float distance = Vector3.Distance(transform.position, zombie.transform.position);
 
-            // Rotate smoothly toward target
+            // Rotate smoothly toward the target
             Vector3 direction = zombie.transform.position - transform.position;
             direction.y = 0;
             transform.rotation = Quaternion.Slerp(
@@ -107,8 +112,9 @@ namespace _Scripts.TeammateScripts
 
         private void Fire(Transform target)
         {
+            Vector3 aimPoint = target.position + Vector3.up * 2f;
             // Compute direction first
-            Vector3 direction = (target.position - projectileSpawn.position).normalized;
+            Vector3 direction = (aimPoint  - projectileSpawn.position).normalized;
 
             // Pull bullet from pool
             GameObject bullet = ObjectPooler.Instance.GetFromPool(
