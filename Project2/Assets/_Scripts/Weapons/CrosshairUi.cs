@@ -12,18 +12,18 @@ namespace _Scripts.Weapons
         public float baseGap = 15f;
         public float bloomMultiplier = 4f;
 
-        private WeaponBloom bloom;
+        private WeaponBloom _bloom;
 
         void Start()
         {
-            bloom = FindObjectOfType<WeaponBloom>();
+            _bloom = FindObjectOfType<WeaponBloom>();
         }
 
         void Update()
         {
-            if (bloom == null) return;
+            if (_bloom == null) return;
 
-            float spread = bloom.CurrentBloom * bloomMultiplier;
+            float spread = _bloom.CurrentBloom * bloomMultiplier;
 
             top.anchoredPosition    = new Vector2(0,  baseGap + spread);
             bottom.anchoredPosition = new Vector2(0, -baseGap - spread);

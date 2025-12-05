@@ -5,60 +5,62 @@ namespace _Scripts.EnemyScripts.States
 {
     public class ZombieChaseState : StateMachineBehaviour
     {
-        NavMeshAgent agent;
-        Transform player;
-        ZombieAudio audio;
+        private static readonly int IsChasing = Animator.StringToHash("isChasing");
+        private static readonly int IsAttacking = Animator.StringToHash("isAttacking");
+        NavMeshAgent _agent;
+        Transform _player;
+        ZombieAudio _audio;
 
         /*public float chaseSpeed = 6f;
         public float stopChasingDistance = 21;
         public float attackingDistance = 2.5f;*/
 
-        Enemy enemy;
-        EnemyStats stats;
+        Enemy _enemy;
+        EnemyStats _stats;
         
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            agent = animator.GetComponent<NavMeshAgent>();
-            enemy = animator.GetComponent<Enemy>();
-            stats = enemy.stats;
-            agent.speed = stats.chaseSpeed;
-            audio = animator.GetComponent<ZombieAudio>();
+            _player = GameObject.FindGameObjectWithTag("Player").transform;
+            _agent = animator.GetComponent<NavMeshAgent>();
+            _enemy = animator.GetComponent<Enemy>();
+            _stats = _enemy.stats;
+            _agent.speed = _stats.chaseSpeed;
+            _audio = animator.GetComponent<ZombieAudio>();
 
         }
 
 
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (enemy.isDead) return;
-            if (!agent.enabled) return;
-            if (!agent.isOnNavMesh) return;
+            if (_enemy.isDead) return;
+            if (!_agent.enabled) return;
+            if (!_agent.isOnNavMesh) return;
             
-            if (audio != null)
-                audio.TickChase();
+            if (_audio != null)
+                _audio.TickChase();
 
-            agent.SetDestination(player.position);
-            animator.transform.LookAt(player);
+            _agent.SetDestination(_player.position);
+            animator.transform.LookAt(_player);
         
-            float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
+            float distanceFromPlayer = Vector3.Distance(_player.position, animator.transform.position);
 
-            if (distanceFromPlayer > stats.stopChasingDistance)
+            if (distanceFromPlayer > _stats.stopChasingDistance)
             {
-                animator.SetBool("isChasing", false);
+                animator.SetBool(IsChasing, false);
             }
 
-            if (distanceFromPlayer < stats.attackRange)
+            if (distanceFromPlayer < _stats.attackRange)
             {
-                animator.SetBool("isAttacking", true);
+                animator.SetBool(IsAttacking, true);
             }
 
         }
 
         override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            if (!agent.enabled) return;
-            if (!agent.isOnNavMesh) return;
-            agent.SetDestination(animator.transform.position);
+            if (!_agent.enabled) return;
+            if (!_agent.isOnNavMesh) return;
+            _agent.SetDestination(animator.transform.position);
         }
     }
 }

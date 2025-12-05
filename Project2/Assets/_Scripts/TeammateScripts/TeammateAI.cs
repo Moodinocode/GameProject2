@@ -7,6 +7,8 @@ namespace _Scripts.TeammateScripts
 {
     public class TeammateAI : MonoBehaviour
     {
+        private static readonly int Attack = Animator.StringToHash("Attack");
+        private static readonly int Speed = Animator.StringToHash("Speed");
         public Transform player;
         public float followDistance = 5f;
         public float shootingRange = 30f;
@@ -15,19 +17,19 @@ namespace _Scripts.TeammateScripts
         public Transform projectileSpawn;
         public float bulletSpeed = 40f;
 
-        private NavMeshAgent agent;
-        private Animator anim;
-        private float fireTimer;
+        private NavMeshAgent _agent;
+        private Animator _anim;
+        private float _fireTimer;
 
         private void Start()
         {
-            agent = GetComponent<NavMeshAgent>();
-            anim = GetComponent<Animator>();
+            _agent = GetComponent<NavMeshAgent>();
+            _anim = GetComponent<Animator>();
         }
 
         private void Update()
         {
-            fireTimer -= Time.deltaTime;
+            _fireTimer -= Time.deltaTime;
 
             FollowPlayer();
             HandleCombat();
@@ -42,11 +44,11 @@ namespace _Scripts.TeammateScripts
 
             if (distance > followDistance)
             {
-                agent.SetDestination(player.position);
+                _agent.SetDestination(player.position);
             }
             else
             {
-                agent.ResetPath();
+                _agent.ResetPath();
             }
         }
 
@@ -66,18 +68,18 @@ namespace _Scripts.TeammateScripts
                 10f * Time.deltaTime
             );
 
-            if (distance <= shootingRange && fireTimer <= 0)
+            if (distance <= shootingRange && _fireTimer <= 0)
             {
-                anim.SetTrigger("Attack");
+                _anim.SetTrigger(Attack);
                 Fire(zombie.transform);
-                fireTimer = fireRate;
+                _fireTimer = fireRate;
             }
         }
 
         private void UpdateAnimations()
         {
-            float speed = agent.velocity.magnitude;
-            anim.SetFloat("Speed", speed);
+            float speed = _agent.velocity.magnitude;
+            _anim.SetFloat(Speed, speed);
         }
 
         private GameObject FindClosestZombie()

@@ -3,6 +3,7 @@ using UnityEngine;
 using _Scripts.EnemyScripts;
 using _Scripts.ObjectPooling;
 using UnityEngine.Pool;
+using UnityEngine.Serialization;
 
 namespace _Scripts.Weapons
 {
@@ -10,7 +11,7 @@ namespace _Scripts.Weapons
     {
         [SerializeField] float timeToDestory = 2f;
         float _timer;
-        [SerializeField] int _damage;
+        [FormerlySerializedAs("_damage")] [SerializeField] int damage;
 
         void Update()
         {
@@ -27,7 +28,7 @@ namespace _Scripts.Weapons
                 Enemy zombie = collision.gameObject.GetComponent<Enemy>();
                 if (zombie != null)
                 {
-                    zombie.TakeDamage(_damage);
+                    zombie.TakeDamage(damage);
                 }
             }
             

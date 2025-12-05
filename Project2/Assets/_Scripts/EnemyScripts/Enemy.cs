@@ -5,6 +5,7 @@ namespace _Scripts.EnemyScripts
 {
     public class Enemy : MonoBehaviour
     {
+        private static readonly int Damage = Animator.StringToHash("DAMAGE");
         public EnemyStats stats;
         private int _hp;
         private Animator _animator;
@@ -23,7 +24,7 @@ namespace _Scripts.EnemyScripts
             _animator = GetComponent<Animator>();
             _navAgent = GetComponent<NavMeshAgent>();
             _audio = GetComponent<ZombieAudio>();
-            _hp = stats.maxHP;
+            _hp = stats.maxHp;
         }
 
         public void TakeDamage(int damageAmount)
@@ -38,7 +39,7 @@ namespace _Scripts.EnemyScripts
                 return;
             } 
             if (_audio != null) _audio.PlayHurt();
-            _animator.SetTrigger("DAMAGE");
+            _animator.SetTrigger(Damage);
         }
         
         private void Die()

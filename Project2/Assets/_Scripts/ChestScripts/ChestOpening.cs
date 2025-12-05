@@ -102,7 +102,13 @@ namespace _Scripts.ChestScripts
                 anim.SetTrigger(Open);
                 if (keyData.hasKey)
                 {
+                    Debug.Log("Key Found");
                     key.SetActive(false); 
+                }
+                else
+                {
+                    key.SetActive(true); 
+                    Debug.Log("Key Not Found");
                 }
                 interactUI.SetActive(false);
             }

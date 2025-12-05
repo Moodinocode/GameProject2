@@ -51,6 +51,8 @@ namespace _Scripts.ChestScripts
 
             if (hasKey)
                 PlayerUIManager.Instance.ShowKeyIcon();
+            else
+                PlayerUIManager.Instance.HideKeyIcon();
         }
 
     }
