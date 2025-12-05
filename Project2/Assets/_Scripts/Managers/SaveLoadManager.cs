@@ -14,7 +14,6 @@ namespace _Scripts.Managers
         public WeaponAmmo ammo;
         public ChestOpening chestState;
         public KeyScript keyState;
-        
     
         private void Awake()
         {

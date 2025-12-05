@@ -6,36 +6,39 @@ namespace _Scripts.EnemyScripts
     public class Enemy : MonoBehaviour
     {
         public EnemyStats stats;
-        private int HP;
-        private Animator animator;
+        private int _hp;
+        private Animator _animator;
         public bool isDead = false;
     
-        private NavMeshAgent navAgent;
-        private ZombieAudio audio; 
+        private NavMeshAgent _navAgent;
+        private ZombieAudio _audio; 
+        
+        public int CurrentHp => _hp;
+
     
     
     
         private void Start()
         {
-            animator = GetComponent<Animator>();
-            navAgent = GetComponent<NavMeshAgent>();
-            audio = GetComponent<ZombieAudio>();
-            HP = stats.maxHP;
+            _animator = GetComponent<Animator>();
+            _navAgent = GetComponent<NavMeshAgent>();
+            _audio = GetComponent<ZombieAudio>();
+            _hp = stats.maxHP;
         }
 
         public void TakeDamage(int damageAmount)
         {
             if (isDead) return;
 
-            HP -= damageAmount;
+            _hp -= damageAmount;
 
-            if (HP <= 0)
+            if (_hp <= 0)
             {
                 Die();
                 return;
             } 
-            if (audio != null) audio.PlayHurt();
-            animator.SetTrigger("DAMAGE");
+            if (_audio != null) _audio.PlayHurt();
+            _animator.SetTrigger("DAMAGE");
         }
         
         private void Die()
@@ -43,15 +46,15 @@ namespace _Scripts.EnemyScripts
             if (isDead) return;
             isDead = true;
             
-            if (audio != null)
-                audio.PlayDeath();
+            if (_audio != null)
+                _audio.PlayDeath();
 
             // Stop NavMeshAgent
-            if (navAgent != null)
+            if (_navAgent != null)
             {
-                navAgent.isStopped = true;
-                navAgent.ResetPath();
-                navAgent.enabled = false;
+                _navAgent.isStopped = true;
+                _navAgent.ResetPath();
+                _navAgent.enabled = false;
             }
             
             foreach (var col in GetComponentsInChildren<Collider>())
@@ -59,14 +62,18 @@ namespace _Scripts.EnemyScripts
 
             // play a random death animation
             int randomValue = Random.Range(0, 2);
-            animator.SetTrigger(randomValue == 0 ? "DIE1" : "DIE2");
+            _animator.SetTrigger(randomValue == 0 ? "DIE1" : "DIE2");
 
             // destroy after 7 seconds
             Destroy(gameObject, 7f);
         }
 
+        public void SetHp(int hp)
+        {
+            _hp = hp;
+        }
 
-        private void onDrawGizmos()
+        private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, 2.5f);
@@ -78,4 +85,12 @@ namespace _Scripts.EnemyScripts
             Gizmos.DrawWireSphere(transform.position, 21f);
         }
     }
+}
+
+
+[System.Serializable]
+public struct ZombieSaveData {
+    public Vector3 position;
+    public int hp;
+    public bool isDead;
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using _Scripts.Managers;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -25,19 +26,24 @@ namespace _Scripts.EnemyScripts
         public GameObject zombiePrefab;
         
         public GameObject portal;
-    
-    
+        
+        public int zombiesSpawnedSoFar;
+        
+        public bool loadingInProgress;
+        
    
         void Start()
         {
             currentZombiesPerWave = initialZombiesPerWave;
-
+            if (SaveSystem.IsLoadingSave)
+                return;
             StartNextWave();
 
         }
 
         private void StartNextWave()
         {
+            zombiesSpawnedSoFar = 0;
             if (currentWave >= maxWaves)
             {
                 wavesFinished = true;
@@ -52,20 +58,24 @@ namespace _Scripts.EnemyScripts
 
         private IEnumerator SpawnWave()
         {
-            for (int i = 0; i < currentZombiesPerWave; i++)
+            for (int i = zombiesSpawnedSoFar; i < currentZombiesPerWave; i++)
             {
                 Vector3 spawnOffset = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f));
                 Vector3 spawnPosition = transform.position + spawnOffset;
                 var zombie = Instantiate(zombiePrefab, spawnPosition, Quaternion.identity);
                 Enemy enemyScript = zombie.GetComponent<Enemy>();
                 currentZombiesAlive.Add(enemyScript);
+                zombiesSpawnedSoFar++;
                 yield return new WaitForSeconds(spawnDelay);
             }
+            loadingInProgress = false;
         }
 
     
         void Update()
         {
+            if (loadingInProgress)
+                return;
             List<Enemy> zombiesToRemove = new List<Enemy>();
             foreach (Enemy zombie in currentZombiesAlive)
             {
@@ -109,5 +119,51 @@ namespace _Scripts.EnemyScripts
             StartNextWave();
         
         }
+        
+        public void Save(ref ZombieSpawnerSaveData data)
+        {
+            data.currentWave = currentWave;
+            data.zombiesPerWave = currentZombiesPerWave;
+            data.inCooldown = inCooldown;
+            data.cooldownCounter = cooldownCounter;
+            data.zombiesSpawnedSoFar = zombiesSpawnedSoFar;
+            data.wavesFinished = wavesFinished;                    
+            data.waveFullySpawned = (zombiesSpawnedSoFar >= currentZombiesPerWave);  
+        }
+
+        
+        public void Load(ZombieSpawnerSaveData data)
+        {
+            loadingInProgress = true;
+            currentWave = data.currentWave;
+            currentZombiesPerWave = data.zombiesPerWave;
+            inCooldown = data.inCooldown;
+            cooldownCounter = data.cooldownCounter;
+            zombiesSpawnedSoFar = data.zombiesSpawnedSoFar;
+            wavesFinished = data.wavesFinished;
+            
+            if (data.waveFullySpawned && wavesFinished)
+            {
+                portal.SetActive(true);
+                return;  
+            }
+            if (!inCooldown && zombiesSpawnedSoFar < currentZombiesPerWave)
+                StartCoroutine(SpawnWave());
+        }
+
     }
+}
+
+
+
+[System.Serializable]
+public struct ZombieSpawnerSaveData {
+    public int currentWave;
+    public int zombiesPerWave;
+    public bool inCooldown;
+    public float cooldownCounter;
+    public int zombiesSpawnedSoFar;
+    public bool wavesFinished;      
+    public bool waveFullySpawned;  
+    
 }

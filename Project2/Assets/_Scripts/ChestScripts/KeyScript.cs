@@ -10,6 +10,11 @@ namespace _Scripts.ChestScripts
 
         private GameObject _keyObject;
 
+        void Awake()
+        {
+            SaveLoadManager.Instance.keyState = this;
+        }
+        
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag("Key")) return;
@@ -35,5 +40,25 @@ namespace _Scripts.ChestScripts
                 Destroy(_keyObject);
             }
         }
+        public void Save(ref KeySaveData data)
+        {
+            data.hasKey = hasKey;
+        }
+
+        public void Load(KeySaveData data)
+        {
+            hasKey = data.hasKey;
+
+            if (hasKey)
+                PlayerUIManager.Instance.ShowKeyIcon();
+        }
+
     }
+}
+
+
+
+[System.Serializable]
+public struct KeySaveData {
+    public bool hasKey;
 }
