@@ -66,6 +66,7 @@
     <Compile Include="Assets\_Scripts\AimStates\AimBaseState.cs" />
     <Compile Include="Assets\_Scripts\AimStates\AimStateManager.cs" />
     <Compile Include="Assets\_Scripts\TeammateScripts\TeammateAI.cs" />
+    <Compile Include="Assets\_Scripts\Managers\CursorController.cs" />
     <Compile Include="Assets\Components\Teammate\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Components\Teammate\DownloadedAssets\Blockout\Scripts\BlockoutRulerObject.cs" />
     <Compile Include="Assets\_Scripts\Weapons\WeaponManager.cs" />
