@@ -1,3 +1,34 @@
+# Unity generated
 Project2/Library/
 Project2/Temp/
 Project2/Logs/
+Project2/Obj/
+Project2/obj/
+Project2/Build/
+Project2/Builds/
+Project2/UserSettings/
+Project2/MemoryCaptures/
+
+# IDE project files - Unity regenerates these
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.opendb
+*.VC.db
+
+# IDE settings
+.idea/
+.vs/
+.vscode/
+
+# Asset packages - the extracted assets are what the project actually uses
+*.unitypackage
+
+# OS
+.DS_Store
+Thumbs.db
