@@ -1,6 +1,8 @@
-# Zombie Survival Shooter
+# FRACTURED: Rise of the Damned
 
 A third-person zombie survival game built in Unity. Fight through two levels, find keys to unlock chests, survive waves of zombies spawning around the map, and reach the portal to escape.
+
+**▶ [Play it on itch.io](https://moodino.itch.io/fractured-rise-of-the-damned)**
 
 University game development project, November–December 2025.
 
